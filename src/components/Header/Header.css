@@ -1,0 +1,32 @@
+.header {
+  color: #fff;
+  padding: 6px calc((100% - 1232px) / 2) 0;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  background: transparent;
+  box-shadow: inset 0px -1px 0px rgba(255, 255, 255, 0.2);
+}
+
+.header__logo {
+  margin: 0 auto 0 0;
+  font-family: 'Roboto Slab', Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+
+  z-index: 9999999;
+}
+
+.header__link {
+  margin: 0 auto 0 0;
+  color: #fff;
+  text-decoration: none;
+  padding: 0;
+  color: inherit;
+}
+
+.header__link:hover {
+  opacity: 0.9;
+}
