@@ -1,5 +1,5 @@
 import * as PATH_TO from './endpoints';
-import { NEWS_API_URL, PAGE_SIZE, API_KEY, DATE_FROM, DATE_TO } from '../configs';
+import { API_URL, API_KEY } from '../configs';
 
 /**
  * @module NewsApi
@@ -14,18 +14,17 @@ import { NEWS_API_URL, PAGE_SIZE, API_KEY, DATE_FROM, DATE_TO } from '../configs
  * -  массив с данными новостей,
  * - пустой массив, если статьи не найдены,
  * - ошибку, если запрос завершился неудачей
- * @param {String} userQuery - ключевое слово (поисковый запрос)
  * @returns {Array} массив с данными найденных новостей
  * @since v.1.1.0
  */
-export const getArticlesFromNewsApi = (userQuery) => {
-  return fetch(
-    `${NEWS_API_URL}${PATH_TO.EVERYTHING}?q=${userQuery}&from=${DATE_FROM}&to=${DATE_TO}&pageSize=${PAGE_SIZE}&apiKey=${API_KEY}`,
-    {
-      method: 'GET',
+export const getCompetitions = () => {
+  return fetch(`${API_URL}${PATH_TO.COMPETITIONS}`, {
+    method: 'GET',
+    headers: {
+      'X-Auth-Token': `${API_KEY}`,
     },
-  ).then((res) => {
-    if (res.status) {
+  }).then((res) => {
+    if (res.ok) {
       return res.json();
     }
     return Promise.reject(`Статус ответа: ${res.status}`);

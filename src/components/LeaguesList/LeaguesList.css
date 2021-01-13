@@ -1,15 +1,16 @@
 .competitions {
-  margin: 0;
-  padding: 70px;
-  box-sizing: border-box;
   width: 100%;
+  margin: 0;
+  padding: 60px 40px 60px 60px;
+  box-sizing: border-box;
 }
 
 .leagues-list {
+  width: 100%;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  width: 100%;
+
   display: flex;
   flex-wrap: wrap;
   list-style: none;
