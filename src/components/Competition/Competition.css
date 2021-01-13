@@ -1,0 +1,33 @@
+.competition {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.leagues-list__item {
+  width: 200px;
+  background: grey;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.leagues-list__item:nth-of-type(6n) {
+  margin-right: 0;
+}
+
+.competition__title {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.competition__country {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.competition__flag {
+  background: grey;
+}

@@ -1,0 +1,22 @@
+.competitions {
+  margin: 0;
+  padding: 70px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.leagues-list {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.competitions__elements {
+}
