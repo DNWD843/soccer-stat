@@ -1,6 +1,6 @@
 import { forNavigation as config } from '../../configs/configForComponents';
 import { NavLink } from 'react-router-dom';
-import { MAIN, SAVED_NEWS } from '../../utils/routesMap';
+import { MAIN, TEAMS } from '../../utils/routesMap';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import './Navigation.css';
@@ -14,12 +14,7 @@ import './Navigation.css';
  * @since v.1.0.0
  */
 function Navigation({ isMobile }) {
-  const {
-    COMPETITIONS_LINK_TEXT,
-    TEAMS_LINK_TEXT,
-    COMPETITION_CALENDAR_LINK_TEXT,
-    TEAM_CALENDAR_LINK_TEXT,
-  } = config;
+  const { COMPETITIONS_LINK_TEXT, TEAMS_LINK_TEXT } = config;
 
   const navbarClassName = classNames('navbar', {
     navbar_mobile: isMobile,
@@ -54,29 +49,11 @@ function Navigation({ isMobile }) {
         </li>
         <li className={navLinksListClassName}>
           <NavLink
-            to={SAVED_NEWS}
+            to={TEAMS}
             className={linkToSavedNewsPageClassName}
             activeClassName={activeLinkClassName}
           >
             {TEAMS_LINK_TEXT}
-          </NavLink>
-        </li>
-        <li className="navbar__item">
-          <NavLink
-            to={'/page'}
-            className={linkToSavedNewsPageClassName}
-            activeClassName={activeLinkClassName}
-          >
-            {COMPETITION_CALENDAR_LINK_TEXT}
-          </NavLink>
-        </li>
-        <li className="navbar__item">
-          <NavLink
-            to={'/page2'}
-            className={linkToSavedNewsPageClassName}
-            activeClassName={activeLinkClassName}
-          >
-            {TEAM_CALENDAR_LINK_TEXT}
           </NavLink>
         </li>
       </ul>

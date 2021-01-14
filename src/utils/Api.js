@@ -17,8 +17,22 @@ import { API_URL, API_KEY } from '../configs';
  * @returns {Array} массив с данными найденных новостей
  * @since v.1.1.0
  */
-export const getCompetitions = () => {
+export const getCompetitionsData = () => {
   return fetch(`${API_URL}${PATH_TO.COMPETITIONS}`, {
+    method: 'GET',
+    headers: {
+      'X-Auth-Token': `${API_KEY}`,
+    },
+  }).then((res) => {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Статус ответа: ${res.status}`);
+  });
+};
+
+export const getTeamsData = () => {
+  return fetch(`${API_URL}${PATH_TO.TEAMS}`, {
     method: 'GET',
     headers: {
       'X-Auth-Token': `${API_KEY}`,

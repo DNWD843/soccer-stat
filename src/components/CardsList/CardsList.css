@@ -1,12 +1,13 @@
-.competitions {
+/*.competitions {
   width: 100%;
   margin: 0;
-  padding: 60px 40px 60px 60px;
+ padding: 60px calc((100% - 1080px) / 2) 40px;
   box-sizing: border-box;
-}
+}*/
 
-.leagues-list {
+.cards {
   width: 100%;
+  max-width: 1080px;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -19,5 +20,5 @@
   align-items: center;
 }
 
-.competitions__elements {
+.content__elements {
 }

@@ -30,7 +30,7 @@
 
 .menu__button {
   color: inherit;
-  display: flex;
+  display: none;
   justify-content: center;
   margin: 13px 0;
   padding: 11px 15px;

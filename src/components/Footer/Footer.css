@@ -2,9 +2,8 @@
   margin: 0;
   padding: 28px calc((100% - 1232px) / 2);
   box-sizing: border-box;
-  background-color: #fff;
-  color: #1a1b22;
   display: flex;
+  box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.2);
 }
 
 .footer__menu {
@@ -44,7 +43,7 @@
   font-size: 18px;
   line-height: 24px;
   text-align: center;
-  color: #1a1b22;
+  color: #b6bcbf;
   text-decoration: none;
 }
 
@@ -78,10 +77,11 @@
 .footer__social-icon {
   width: 20px;
   height: 20px;
-  background: #fff;
+  background-color: #b6bcbf;
   background-size: cover;
   background-position: center;
   cursor: pointer;
+  border-radius: 50%;
 }
 
 .footer__social-icon:hover {
@@ -90,10 +90,6 @@
 
 .footer__social-icon_type_github {
   background-image: url('../../images/github.svg');
-}
-
-.footer__social-icon_type_facebook {
-  background-image: url('../../images/facebook.svg');
 }
 
 @media screen and (max-width: 1280px) {

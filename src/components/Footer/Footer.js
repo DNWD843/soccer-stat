@@ -11,14 +11,7 @@ import './Footer.css';
  * @since v.1.0.0
  */
 function Footer() {
-  const {
-    COPYRIGHT_TEXT,
-    NAV_LINK_TEXT,
-    OUTER_LINK_TEXT,
-    OUTER_LINK,
-    SOCIAL_LINK_GITHUB,
-    SOCIAL_LINK_FACEBOOK,
-  } = config;
+  const { COPYRIGHT_TEXT, NAV_LINK_TEXT, OUTER_LINK_TEXT, OUTER_LINK, SOCIAL_LINK_GITHUB } = config;
   return (
     <>
       <footer className="footer">

@@ -21,16 +21,7 @@ import './Header.css';
  * @returns {JSX}
  * @since v.1.0.0
  */
-function Header({
-  isLoggedIn,
-  onLogInClick,
-  onLogOutClick,
-  children,
-  onMenuButtonClick,
-  isMobileMenuOpened,
-  isPopupOpened,
-  onOverlayClick,
-}) {
+function Header({ onMenuButtonClick, isMobileMenuOpened, onOverlayClick }) {
   const { HEADER_LOGO_TEXT } = config;
 
   const headerContainerClassName = classNames('header__container', {
@@ -38,8 +29,8 @@ function Header({
   });
 
   const headerMobileMenuButtonClassName = classNames('header__menu-button', {
-    'header__menu-button_not-pressed': !(isMobileMenuOpened && isPopupOpened),
-    'header__menu-button_pressed': isMobileMenuOpened || isPopupOpened,
+    'header__menu-button_not-pressed': !isMobileMenuOpened,
+    'header__menu-button_pressed': isMobileMenuOpened,
   });
 
   const headerMobileMenuOverlayClassName = classNames('overlay', {
@@ -50,43 +41,23 @@ function Header({
     <header className="header">
       <div className={headerContainerClassName}>
         <p className="header__logo">{HEADER_LOGO_TEXT}</p>
-        <Menu
-          onLogInClick={onLogInClick}
-          onLogOutClick={onLogOutClick}
-          isLoggedIn={isLoggedIn}
-          isMobile={false}
-          isMobileMenuOpened={isMobileMenuOpened}
-        />
+        <Menu isMobile={false} isMobileMenuOpened={isMobileMenuOpened} />
         <button
           type="button"
           onClick={onMenuButtonClick}
           className={headerMobileMenuButtonClassName}
         />
       </div>
-
-      {children}
-
       <div className={headerMobileMenuOverlayClassName} onClick={onOverlayClick}>
-        <Menu
-          onLogInClick={onLogInClick}
-          onLogOutClick={onLogOutClick}
-          isLoggedIn={isLoggedIn}
-          isMobile={true}
-          isMobileMenuOpened={isMobileMenuOpened}
-        />
+        <Menu isMobile={true} isMobileMenuOpened={isMobileMenuOpened} />
       </div>
     </header>
   );
 }
 
 Header.propTypes = {
-  isLoggedIn: PropTypes.bool.isRequired,
-  onLogInClick: PropTypes.func.isRequired,
-  onLogOutClick: PropTypes.func.isRequired,
-  children: PropTypes.element,
   onMenuButtonClick: PropTypes.func.isRequired,
   isMobileMenuOpened: PropTypes.bool.isRequired,
-  isPopupOpened: PropTypes.bool.isRequired,
   onOverlayClick: PropTypes.func.isRequired,
 };
 
