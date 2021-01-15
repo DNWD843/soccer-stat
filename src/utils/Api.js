@@ -44,3 +44,31 @@ export const getTeamsData = () => {
     return Promise.reject(`Статус ответа: ${res.status}`);
   });
 };
+
+export const getCompetitionCalendar = (competitionId) => {
+  return fetch(`${API_URL}${PATH_TO.COMPETITIONS}/${competitionId}${PATH_TO.MATCHES}`, {
+    method: 'GET',
+    headers: {
+      'X-Auth-Token': `${API_KEY}`,
+    },
+  }).then((res) => {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Статус ответа: ${res.status}`);
+  });
+};
+
+export const getTeamCalendar = (teamId) => {
+  return fetch(`${API_URL}${PATH_TO.TEAMS}/${teamId}${PATH_TO.MATCHES}`, {
+    method: 'GET',
+    headers: {
+      'X-Auth-Token': `${API_KEY}`,
+    },
+  }).then((res) => {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Статус ответа: ${res.status}`);
+  });
+};

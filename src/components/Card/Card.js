@@ -1,12 +1,11 @@
 import path from '../../images/soccer-ball.svg';
 import { Link } from 'react-router-dom';
-import { TEAMS } from '../../utils/routesMap';
 import './Card.css';
 
-function Card({ id, title, country, image }) {
+function Card({ pathToCalendar, title, country, image }) {
   return (
     <li className="card cards__item ">
-      <Link to={TEAMS} className="card__link">
+      <Link to={pathToCalendar} className="card__link">
         <>
           <div className="card__info">
             <h2 className="card__title">{title}</h2>
@@ -15,7 +14,7 @@ function Card({ id, title, country, image }) {
           <div
             className="card__image"
             style={{
-              backgroundImage: image ? `url(${image}` : `url(${path})`,
+              backgroundImage: image ? `url(${image})` : `url(${path})`,
             }}
           ></div>
         </>
