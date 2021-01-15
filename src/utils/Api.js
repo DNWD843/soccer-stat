@@ -72,3 +72,17 @@ export const getTeamCalendar = (teamId) => {
     return Promise.reject(`Статус ответа: ${res.status}`);
   });
 };
+
+export const getTeamInfo = (teamId) => {
+  return fetch(`${API_URL}${PATH_TO.TEAMS}/${teamId}`, {
+    method: 'GET',
+    headers: {
+      'X-Auth-Token': `${API_KEY}`,
+    },
+  }).then((res) => {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Статус ответа: ${res.errorCode}${res.message}`);
+  });
+};

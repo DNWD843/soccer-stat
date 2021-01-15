@@ -1,0 +1,77 @@
+.team-calendar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.team-calendar__title {
+  color: #fff;
+  margin: 0;
+  font-size: 30px;
+}
+
+.team-calendar__info {
+  display: flex;
+  align-self: flex-start;
+  width: 500px;
+  padding: 40px 0 40px 40px;
+  box-sizing: border-box;
+}
+
+.team-calendar__image {
+  width: 150px;
+  object-fit: contain;
+  margin-right: 25px;
+}
+
+.team-calendar__description {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 10px 0;
+  box-sizing: border-box;
+}
+
+.team-calendar__team-name {
+  color: #fff;
+  margin: 0 0 10px;
+  font-size: 24px;
+}
+
+.team-calendar__team-country-name {
+  color: rgba(248, 237, 201, 0.8);
+  margin: 0;
+}
+
+.team-calendar-table {
+  color: #fff;
+}
+
+.table-head {
+}
+
+.team-calendar-table__header {
+}
+
+.table-head__date {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.table-head__competition {
+}
+
+.table-head__opponent {
+}
+
+.table-head__score {
+}
+
+.table-head__winner {
+}
+
+.table-head__status {
+}

@@ -1,6 +1,6 @@
 import { forNavigation as config } from '../../configs/configForComponents';
 import { NavLink } from 'react-router-dom';
-import { MAIN, TEAMS } from '../../utils/routesMap';
+import { COMPETITIONS, MAIN, TEAMS } from '../../utils/routesMap';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import './Navigation.css';
@@ -40,7 +40,7 @@ function Navigation({ isMobile }) {
         <li className="navbar__item">
           <NavLink
             exact
-            to={MAIN}
+            to={COMPETITIONS}
             className={linkToSavedNewsPageClassName}
             activeClassName={activeLinkClassName}
           >

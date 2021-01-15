@@ -3,7 +3,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import CardsList from '../CardsList/CardsList';
-import Calendar from '../Calendar/Calendar';
+import TeamCalendar from '../TeamCalendar/TeamCalendar';
 import PageNotFound from '../PageNotFound/PageNotFound';
 import './App.css';
 import {
@@ -72,10 +72,10 @@ function App() {
             <CardsList cardsList={teamsList} />
           </Route>
           <Route path={`${to.COMPETITIONS}/:id`}>
-            <Calendar getCalendarData={getCompetitionCalendar} />
+            <TeamCalendar getCalendarData={getCompetitionCalendar} />
           </Route>
           <Route path={`${to.TEAMS}/:id`}>
-            <Calendar getCalendarData={getTeamCalendar} />
+            <TeamCalendar getCalendarData={getTeamCalendar} />
           </Route>
           <Route path={to.ANY_ROUTE}>
             <PageNotFound />
