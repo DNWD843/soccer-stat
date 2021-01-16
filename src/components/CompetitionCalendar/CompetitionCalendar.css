@@ -1,0 +1,71 @@
+.competition-calendar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.competition-calendar__title {
+  color: #fff;
+  margin: 0;
+  font-size: 30px;
+}
+
+.competition-calendar__info {
+  display: flex;
+  align-self: flex-start;
+  width: 100%;
+  padding: 40px 0 40px 40px;
+  box-sizing: border-box;
+}
+
+.competition-calendar__image {
+  width: 150px;
+  object-fit: contain;
+  margin-right: 25px;
+  color: #fff;
+}
+
+.competition-calendar__description {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 10px 0;
+  box-sizing: border-box;
+  width: 300px;
+}
+
+.competition-calendar__competition-name {
+  color: #fff;
+  margin: 0;
+  font-size: 24px;
+}
+
+.competition-calendar__competition-country-name {
+  color: rgba(248, 237, 201, 0.8);
+  margin: 0 0 10px;
+}
+
+.competition-calendar__link {
+  text-decoration: none;
+  color: #b6bcbf;
+  align-self: flex-start;
+  margin-top: 10px;
+  transition: color 0.2s linear, text-decoration 0.2s linear;
+}
+
+.competition-calendar__link:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.competition-calendar__season {
+  color: #fff;
+  margin: 0 0 10px;
+}
+
+.competition-calendar__matchday {
+  color: #fff;
+  margin: 0 0 10px;
+}

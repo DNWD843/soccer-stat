@@ -7,15 +7,24 @@ import './TeamCalendar.css';
 
 function TeamCalendar({ getCalendarData, getTeamInfo }) {
   let { id } = useParams();
-  const { BACK_TO_TEAMS_LIST_LINK_TEXT } = config;
+  const {
+    TITLE,
+    BACK_TO_TEAMS_LIST_LINK_TEXT,
+    DATE,
+    COMPETITION,
+    OPPONENT,
+    SCORE,
+    WINNER,
+    STATUS,
+  } = config;
   const [teamCalendarData, setTeamCalendarData] = useState([]);
-  const [currentTeam, setCurrentTeam] = useState({});
+  const [teamInfo, setTeamInfo] = useState({});
 
   useEffect(() => {
     Promise.all([getCalendarData(id), getTeamInfo(id)])
-      .then(([calendarData, teamInfo]) => {
-        setTeamCalendarData(calendarData.matches);
-        setCurrentTeam(teamInfo);
+      .then(([data, info]) => {
+        setTeamCalendarData(data.matches);
+        setTeamInfo(info);
       })
       .catch((err) => {
         console.log(err);
@@ -24,17 +33,17 @@ function TeamCalendar({ getCalendarData, getTeamInfo }) {
 
   return (
     <section className="team-calendar">
-      <h2 className="team-calendar__title">Расписание игр</h2>
+      <h2 className="team-calendar__title">{TITLE}</h2>
       <div className="team-calendar__info">
         <img
-          src={currentTeam.crestUrl}
+          src={teamInfo.crestUrl}
           alt="логотип футбольного клуба"
           className="team-calendar__image"
         />
         <div className="team-calendar__description">
-          <h3 className="team-calendar__team-name">{currentTeam.name || ''}</h3>
+          <h3 className="team-calendar__team-name">{teamInfo.name || ''}</h3>
           <p className="team-calendar__team-country-name">
-            {currentTeam.area ? currentTeam.area.name : ''}
+            {teamInfo.area ? teamInfo.area.name : ''}
           </p>
         </div>
         <Link className="team-calendar__link" to={TEAMS}>
@@ -46,22 +55,22 @@ function TeamCalendar({ getCalendarData, getTeamInfo }) {
         <thead className="table-head team-calendar-table__header">
           <tr>
             <th className="table-head__cell" colSpan="2">
-              <span className="table-head__date">Дата</span>
+              <span className="table-head__date">{DATE}</span>
             </th>
             <th className="table-head__cell">
-              <span className="table-head__competition">Турнир</span>
+              <span className="table-head__competition">{COMPETITION}</span>
             </th>
             <th className="table-head__cell">
-              <span className="table-head__opponent">Соперник</span>
+              <span className="table-head__opponent">{OPPONENT}</span>
             </th>
             <th className="table-head__cell">
-              <span className="table-head__score">Счет</span>
+              <span className="table-head__score">{SCORE}</span>
             </th>
             <th className="table-head__cell">
-              <span className="table-head__winner">Победитель</span>
+              <span className="table-head__winner">{WINNER}</span>
             </th>
             <th className="table-head__cell">
-              <span className="table-head__status">Статус</span>
+              <span className="table-head__status">{STATUS}</span>
             </th>
           </tr>
         </thead>

@@ -4,6 +4,7 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import CardsList from '../CardsList/CardsList';
 import TeamCalendar from '../TeamCalendar/TeamCalendar';
+import CompetitionCalendar from '../CompetitionCalendar/CompetitionCalendar';
 import PageNotFound from '../PageNotFound/PageNotFound';
 import './App.css';
 import {
@@ -12,6 +13,7 @@ import {
   getCompetitionCalendar,
   getTeamCalendar,
   getTeamInfo,
+  getCompetitionInfo,
 } from '../../utils/Api';
 import * as to from '../../utils/routesMap';
 
@@ -73,7 +75,10 @@ function App() {
             <CardsList cardsList={teamsList} />
           </Route>
           <Route path={`${to.COMPETITIONS}/:id`}>
-            <TeamCalendar getCalendarData={/*getCompetitionCalendar*/ getTeamCalendar} />
+            <CompetitionCalendar
+              getCalendarData={getCompetitionCalendar}
+              getCompetitionInfo={getCompetitionInfo}
+            />
           </Route>
           <Route path={`${to.TEAMS}/:id`}>
             <TeamCalendar getCalendarData={getTeamCalendar} getTeamInfo={getTeamInfo} />

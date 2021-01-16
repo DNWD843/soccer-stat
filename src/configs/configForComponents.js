@@ -38,5 +38,19 @@ export const forPageNotFound = {
 };
 
 export const forTeamCalendar = {
+  TITLE: 'Расписание игр',
   BACK_TO_TEAMS_LIST_LINK_TEXT: 'Вернуться к списку команд',
+  DATE: 'Дата',
+  COMPETITION: 'Турнир',
+  OPPONENT: 'Соперник',
+  SCORE: 'Счет',
+  WINNER: 'Счет',
+  STATUS: 'Статус',
+};
+
+export const forCompetitionCalendar = {
+  TITLE: 'Расписание игр',
+  BACK_TO_COMPETITIONS_LIST_LINK_TEXT: 'Вернуться к списку турниров',
+  SEASON: 'Сезон',
+  MATCHDAY: 'Тур',
 };

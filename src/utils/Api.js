@@ -86,3 +86,17 @@ export const getTeamInfo = (teamId) => {
     return Promise.reject(`Статус ответа: ${res.errorCode}${res.message}`);
   });
 };
+
+export const getCompetitionInfo = (competitionId) => {
+  return fetch(`${API_URL}${PATH_TO.COMPETITIONS}/${competitionId}`, {
+    method: 'GET',
+    headers: {
+      'X-Auth-Token': `${API_KEY}`,
+    },
+  }).then((res) => {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Статус ответа: ${res.errorCode}${res.message}`);
+  });
+};
