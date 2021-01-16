@@ -11,8 +11,8 @@ export const forHeader = {
 };
 
 export const forNavigation = {
-  COMPETITIONS_LINK_TEXT: 'Список лиг',
-  TEAMS_LINK_TEXT: 'Список команд',
+  COMPETITIONS_LINK_TEXT: 'Турниры',
+  TEAMS_LINK_TEXT: 'Команды',
   COMPETITION_CALENDAR_LINK_TEXT: 'Календарь лиги',
   TEAM_CALENDAR_LINK_TEXT: 'Календарь команды',
 };

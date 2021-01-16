@@ -55,10 +55,14 @@
 .team-calendar-table__header {
 }
 
+.table-head__cell {
+  padding: 5px 0 5px 10px;
+  box-sizing: border-box;
+  border-bottom: 1px solid grey;
+  border-top: 1px solid grey;
+  margin: 5px;
+}
 .table-head__date {
-  display: block;
-  width: 100%;
-  text-align: center;
 }
 
 .table-head__competition {

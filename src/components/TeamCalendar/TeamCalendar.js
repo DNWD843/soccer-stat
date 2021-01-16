@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { getTeamInfo } from '../../utils/Api';
 import TeamCalendarTable from '../TeamCalendarTable/TeamCalendarTable';
 import './TeamCalendar.css';
 
-function TeamCalendar({ getCalendarData }) {
+function TeamCalendar({ getCalendarData, getTeamInfo }) {
   let { id } = useParams();
   const [teamCalendarData, setTeamCalendarData] = useState([]);
   const [currentTeam, setCurrentTeam] = useState({});
@@ -18,7 +17,7 @@ function TeamCalendar({ getCalendarData }) {
       .catch((err) => {
         console.log(err);
       });
-  }, [getCalendarData, id]);
+  }, [getCalendarData, getTeamInfo, id]);
 
   return (
     <section className="team-calendar">
@@ -40,29 +39,29 @@ function TeamCalendar({ getCalendarData }) {
       <table className="team-calendar-table">
         <thead className="table-head team-calendar-table__header">
           <tr>
-            <th colSpan="2">
+            <th className="table-head__cell" colSpan="2">
               <span className="table-head__date">Дата</span>
             </th>
-            <th>
-              <p className="table-head__competition">Турнир</p>
+            <th className="table-head__cell">
+              <span className="table-head__competition">Турнир</span>
             </th>
-            <th>
-              <p className="table-head__opponent">Соперник</p>
+            <th className="table-head__cell">
+              <span className="table-head__opponent">Соперник</span>
             </th>
-            <th>
+            <th className="table-head__cell">
               <span className="table-head__score">Счет</span>
             </th>
-            <th>
-              <p className="table-head__winner">Победитель</p>
+            <th className="table-head__cell">
+              <span className="table-head__winner">Победитель</span>
             </th>
-            <th>
-              <p className="table-head__status">Статус</p>
+            <th className="table-head__cell">
+              <span className="table-head__status">Статус</span>
             </th>
           </tr>
         </thead>
         <tbody>
           {teamCalendarData.map((match) => (
-            <TeamCalendarTable key={match.id} match={match} id={id} />
+            <TeamCalendarTable key={match.id} match={match} selectedTeamId={id} />
           ))}
         </tbody>
       </table>

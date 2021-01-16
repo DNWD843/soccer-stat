@@ -11,6 +11,7 @@ import {
   getTeamsData,
   getCompetitionCalendar,
   getTeamCalendar,
+  getTeamInfo,
 } from '../../utils/Api';
 import * as to from '../../utils/routesMap';
 
@@ -72,10 +73,10 @@ function App() {
             <CardsList cardsList={teamsList} />
           </Route>
           <Route path={`${to.COMPETITIONS}/:id`}>
-            <TeamCalendar getCalendarData={getCompetitionCalendar} />
+            <TeamCalendar getCalendarData={/*getCompetitionCalendar*/ getTeamCalendar} />
           </Route>
           <Route path={`${to.TEAMS}/:id`}>
-            <TeamCalendar getCalendarData={getTeamCalendar} />
+            <TeamCalendar getCalendarData={getTeamCalendar} getTeamInfo={getTeamInfo} />
           </Route>
           <Route path={to.ANY_ROUTE}>
             <PageNotFound />
