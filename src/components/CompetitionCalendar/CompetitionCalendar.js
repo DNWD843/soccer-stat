@@ -2,6 +2,7 @@ import { COMPETITIONS } from '../../utils/routesMap';
 import { forCompetitionCalendar as config } from '../../configs/configForComponents';
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import pathToBallImage from '../../images/soccer-ball.svg';
 import './CompetitionCalendar.css';
 
 function CompetitionCalendar({ getCalendarData, getCompetitionInfo }) {
@@ -13,8 +14,10 @@ function CompetitionCalendar({ getCalendarData, getCompetitionInfo }) {
 
   const currentSeasonInfo = competitionInfo.currentSeason
     ? `${SEASON}: ${competitionInfo.currentSeason.startDate}/${competitionInfo.currentSeason.endDate}`
-    : '';
-  const currentManchDay = `${MATCHDAY}: ${competitionInfo.currentMatchDay}`;
+    : `${SEASON}: `;
+  const currentManchDay = competitionInfo.currentSeason
+    ? `${MATCHDAY}: ${competitionInfo.currentSeason.currentMatchday}`
+    : `${MATCHDAY}: `;
 
   useEffect(() => {
     Promise.all([getCalendarData(id), getCompetitionInfo(id)])
@@ -25,13 +28,14 @@ function CompetitionCalendar({ getCalendarData, getCompetitionInfo }) {
       .catch((err) => {
         console.log(err);
       });
-  });
+  }, [getCalendarData, getCompetitionInfo, id]);
+
   return (
     <section className="competition-calendar">
       <h2 className="competition-calendar__title">{TITLE}</h2>
       <div className="competition-calendar__info">
         <img
-          src={competitionInfo.emblemUrl}
+          src={competitionInfo.emblemUrl || pathToBallImage}
           alt="логотип футбольного клуба"
           className="competition-calendar__image"
         />
