@@ -39,7 +39,6 @@ function Navigation({ isMobile }) {
       <ul className={navLinksListClassName}>
         <li className="navbar__item">
           <NavLink
-            exact
             to={COMPETITIONS}
             className={linkToSavedNewsPageClassName}
             activeClassName={activeLinkClassName}

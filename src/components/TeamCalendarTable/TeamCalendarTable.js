@@ -32,7 +32,13 @@ function TeamCalendarTable({ match, selectedTeamId }) {
         </td>
         <td className="team-calendar-table__cell">
           <span className="stroke__winner">
-            {match.score.winner === 'HOME_TEAM' ? match.homeTeam.name : match.awayTeam.name}
+            {!match.score.winner
+              ? ''
+              : match.score.winner === 'DRAW'
+              ? match.score.winner
+              : match.score.winner === 'HOME_TEAM'
+              ? match.homeTeam.name
+              : match.awayTeam.name}
           </span>
         </td>
         <td className="team-calendar-table__cell">
