@@ -57,5 +57,6 @@ export const forCompetitionCalendar = {
   HOMETEAM: 'Хозяева',
   SCORE: 'Счет',
   AWAYTEAM: 'Гости',
+  GROUP: 'Группа',
   STATUS: 'Статус',
 };

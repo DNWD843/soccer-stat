@@ -26,6 +26,9 @@ function CompetitionCalendarTable({ match }) {
           <span className="matchday-table-stroke__awayteam">{match.awayTeam.name}</span>
         </td>
         <td className="matchday-table__cell">
+          <span className="matchday-table-stroke__group">{match.group}</span>
+        </td>
+        <td className="matchday-table__cell">
           <span className="matchday-table-stroke__status">{match.status}</span>
         </td>
       </tr>

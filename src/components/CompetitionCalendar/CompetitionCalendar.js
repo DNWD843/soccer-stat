@@ -17,6 +17,7 @@ function CompetitionCalendar({ getCalendarData, getCompetitionInfo }) {
     HOMETEAM,
     SCORE,
     AWAYTEAM,
+    GROUP,
     STATUS,
   } = config;
 
@@ -36,10 +37,18 @@ function CompetitionCalendar({ getCalendarData, getCompetitionInfo }) {
     Promise.all([getCalendarData(id), getCompetitionInfo(id)])
       .then(([data, info]) => {
         const matchDaysSortedByNumber = data.matches.reduce((acc, match) => {
-          if (!acc[match.matchday]) {
-            acc[match.matchday] = [match];
+          if (match.matchday) {
+            if (!acc[match.matchday]) {
+              acc[match.matchday] = [match];
+            } else {
+              acc[match.matchday].push(match);
+            }
           } else {
-            acc[match.matchday].push(match);
+            if (!acc[match.stage]) {
+              acc[match.stage] = [match];
+            } else {
+              acc[match.stage].push(match);
+            }
           }
           return acc;
         }, {});
@@ -90,6 +99,9 @@ function CompetitionCalendar({ getCalendarData, getCompetitionInfo }) {
               <span className="matchday-table-head__awayteam">{AWAYTEAM}</span>
             </th>
             <th className="matchday-table-head__cell">
+              <span className="matchday-table-head__group">{GROUP}</span>
+            </th>
+            <th className="matchday-table-head__cell">
               <span className="matchday-table-head__status">{STATUS}</span>
             </th>
           </tr>
@@ -97,7 +109,7 @@ function CompetitionCalendar({ getCalendarData, getCompetitionInfo }) {
 
         <tbody>
           {competitionInfo.currentSeason &&
-            calendarData[competitionInfo.currentSeason.currentMatchday].map((match) => (
+            calendarData['2'].map((match) => (
               <CompetitionCalendarTable key={match.id} match={match} />
             ))}
         </tbody>
