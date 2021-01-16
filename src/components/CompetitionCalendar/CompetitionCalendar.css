@@ -47,6 +47,16 @@
   margin: 0 0 10px;
 }
 
+.competition-calendar__season {
+  color: #fff;
+  margin: 0 0 10px;
+}
+
+.competition-calendar__matchday {
+  color: #fff;
+  margin: 0 0 10px;
+}
+
 .competition-calendar__link {
   text-decoration: none;
   color: #b6bcbf;
@@ -60,12 +70,13 @@
   text-decoration: underline;
 }
 
-.competition-calendar__season {
+.matchday-table {
   color: #fff;
-  margin: 0 0 10px;
 }
 
-.competition-calendar__matchday {
-  color: #fff;
-  margin: 0 0 10px;
+.matchday-table-head__cell {
+  padding: 5px 0;
+  box-sizing: border-box;
+  border-bottom: 1px solid grey;
+  border-top: 1px solid grey;
 }

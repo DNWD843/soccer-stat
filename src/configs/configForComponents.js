@@ -53,4 +53,9 @@ export const forCompetitionCalendar = {
   BACK_TO_COMPETITIONS_LIST_LINK_TEXT: 'Вернуться к списку турниров',
   SEASON: 'Сезон',
   MATCHDAY: 'Тур',
+  DATE: 'Дата',
+  HOMETEAM: 'Хозяева',
+  SCORE: 'Счет',
+  AWAYTEAM: 'Гости',
+  STATUS: 'Статус',
 };

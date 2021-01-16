@@ -25,9 +25,9 @@ function TeamCalendarTable({ match, selectedTeamId }) {
         </td>
         <td className="team-calendar-table__cell">
           <span className="stroke__score">
-            {`${match.score.fullTime.homeTeam !== null ? match.score.fullTime.homeTeam : ' - '} : ${
-              match.score.fullTime.awayTeam !== null ? match.score.fullTime.awayTeam : ' - '
-            }`}
+            {`${
+              match.score.fullTime.homeTeam !== null ? match.score.fullTime.homeTeam : ' -- '
+            } : ${match.score.fullTime.awayTeam !== null ? match.score.fullTime.awayTeam : ' -- '}`}
           </span>
         </td>
         <td className="team-calendar-table__cell">

@@ -2,7 +2,7 @@
 }
 
 .team-calendar-table__cell {
-  padding: 5px 0 5px 10px;
+  padding: 5px 10px;
   box-sizing: border-box;
   border-bottom: 1px solid grey;
   margin: 5px;
