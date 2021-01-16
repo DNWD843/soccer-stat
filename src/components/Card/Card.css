@@ -27,6 +27,7 @@
   justify-content: space-between;
   color: #fff;
   text-decoration: none;
+  transition: opacity 0.15s linear;
 }
 
 .card__link:hover {

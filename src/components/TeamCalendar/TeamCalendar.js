@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import TeamCalendarTable from '../TeamCalendarTable/TeamCalendarTable';
+import { TEAMS } from '../../utils/routesMap';
+import { forTeamCalendar as config } from '../../configs/configForComponents';
 import './TeamCalendar.css';
 
 function TeamCalendar({ getCalendarData, getTeamInfo }) {
   let { id } = useParams();
+  const { BACK_TO_TEAMS_LIST_LINK_TEXT } = config;
   const [teamCalendarData, setTeamCalendarData] = useState([]);
   const [currentTeam, setCurrentTeam] = useState({});
 
@@ -34,6 +37,9 @@ function TeamCalendar({ getCalendarData, getTeamInfo }) {
             {currentTeam.area ? currentTeam.area.name : ''}
           </p>
         </div>
+        <Link className="team-calendar__link" to={TEAMS}>
+          {BACK_TO_TEAMS_LIST_LINK_TEXT}
+        </Link>
       </div>
 
       <table className="team-calendar-table">

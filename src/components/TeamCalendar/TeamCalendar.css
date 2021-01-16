@@ -14,7 +14,7 @@
 .team-calendar__info {
   display: flex;
   align-self: flex-start;
-  width: 500px;
+  width: 100%;
   padding: 40px 0 40px 40px;
   box-sizing: border-box;
 }
@@ -32,6 +32,7 @@
   justify-content: flex-start;
   padding: 10px 0;
   box-sizing: border-box;
+  width: 300px;
 }
 
 .team-calendar__team-name {
@@ -45,6 +46,19 @@
   margin: 0;
 }
 
+.team-calendar__link {
+  text-decoration: none;
+  color: #b6bcbf;
+  align-self: flex-start;
+  margin-top: 10px;
+  transition: color 0.2s linear, text-decoration 0.2s linear;
+}
+
+.team-calendar__link:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
 .team-calendar-table {
   color: #fff;
 }
@@ -56,11 +70,10 @@
 }
 
 .table-head__cell {
-  padding: 5px 0 5px 10px;
+  padding: 5px 0;
   box-sizing: border-box;
   border-bottom: 1px solid grey;
   border-top: 1px solid grey;
-  margin: 5px;
 }
 .table-head__date {
 }

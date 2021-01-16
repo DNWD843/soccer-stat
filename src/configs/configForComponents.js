@@ -36,3 +36,7 @@ export const forPageNotFound = {
   DESCRIPTION: 'Ой! Кажется, такой страницы не существует.',
   LINK_TEXT: 'На главную',
 };
+
+export const forTeamCalendar = {
+  BACK_TO_TEAMS_LIST_LINK_TEXT: 'Вернуться к списку команд',
+};

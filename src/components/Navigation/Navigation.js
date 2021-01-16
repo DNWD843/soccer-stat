@@ -1,6 +1,6 @@
 import { forNavigation as config } from '../../configs/configForComponents';
 import { NavLink } from 'react-router-dom';
-import { COMPETITIONS, MAIN, TEAMS } from '../../utils/routesMap';
+import { COMPETITIONS, TEAMS } from '../../utils/routesMap';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import './Navigation.css';

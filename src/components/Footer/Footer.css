@@ -45,6 +45,7 @@
   text-align: center;
   color: #b6bcbf;
   text-decoration: none;
+  transition: opacity 0.15s linear;
 }
 
 .footer__link:hover {
@@ -82,6 +83,7 @@
   background-position: center;
   cursor: pointer;
   border-radius: 50%;
+  transition: opacity 0.15s linear;
 }
 
 .footer__social-icon:hover {
