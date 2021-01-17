@@ -74,14 +74,20 @@ function App() {
           <Route path={to.TEAMS} exact>
             <CardsList cardsList={teamsList} />
           </Route>
-          <Route path={`${to.COMPETITIONS}/:id`}>
+          <Route path={`${to.COMPETITIONS}/:id`} exact>
             <CompetitionCalendar
               getCalendarData={getCompetitionCalendar}
               getCompetitionInfo={getCompetitionInfo}
             />
           </Route>
-          <Route path={`${to.TEAMS}/:id`}>
+          <Route path={`${to.TEAMS}/:id`} exact>
             <TeamCalendar getCalendarData={getTeamCalendar} getTeamInfo={getTeamInfo} />
+          </Route>
+          <Route path={`${to.COMPETITIONS}/:id/season/:seasonId/stage/:stageId`}>
+            <CompetitionCalendar
+              getCalendarData={getCompetitionCalendar}
+              getCompetitionInfo={getCompetitionInfo}
+            />
           </Route>
           <Route path={to.ANY_ROUTE}>
             <PageNotFound />

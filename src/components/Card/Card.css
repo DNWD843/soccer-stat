@@ -13,6 +13,7 @@
   background-color: rgba(107, 107, 107, 0.24);
   margin-right: 20px;
   margin-bottom: 20px;
+  cursor: pointer;
 }
 
 .cards__item:nth-of-type(5n) {

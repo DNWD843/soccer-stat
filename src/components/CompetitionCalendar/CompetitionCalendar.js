@@ -1,13 +1,17 @@
 import { COMPETITIONS } from '../../utils/routesMap';
 import { forCompetitionCalendar as config } from '../../configs/configForComponents';
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useHistory } from 'react-router-dom';
 import pathToBallImage from '../../images/soccer-ball.svg';
 import CompetitionCalendarTableStroke from '../CompetitionCalendarTableStroke/CompetitionCalendarTableStroke';
 import './CompetitionCalendar.css';
 
 function CompetitionCalendar({ getCalendarData, getCompetitionInfo }) {
-  let { id } = useParams();
+  const history = useHistory();
+  let { id, seasonId, stageId } = useParams();
+
+  console.log({ id, seasonId });
+
   const {
     TITLE,
     BACK_TO_COMPETITIONS_LIST_LINK_TEXT,
@@ -26,27 +30,11 @@ function CompetitionCalendar({ getCalendarData, getCompetitionInfo }) {
 
   const [calendarData, setCalendarData] = useState([]);
   const [competitionInfo, setCompetitionInfo] = useState({});
-  const [seasonSelectValue, setSeasonSelectValue] = useState(
-    competitionInfo.currentSeason
-      ? new Date(competitionInfo.currentSeason.startDate).getFullYear() /
-          new Date(competitionInfo.currentSeason.endDate).getFullYear()
-      : 2020,
-  );
-  const [stageSelectValue, setStageSelectValue] = useState(
-    competitionInfo.currentSeason ? competitionInfo.currentSeason.currentMatchday : 1,
-  );
-  /*
-  const currentSeasonInfo = competitionInfo.currentSeason
-    ? `${SEASON}: ${new Date(competitionInfo.currentSeason.startDate).getFullYear()}/${new Date(
-        competitionInfo.currentSeason.endDate,
-      ).getFullYear()}`
-    : `${SEASON}: `;
-  const currentManchDay = competitionInfo.currentSeason
-    ? `${MATCHDAY}: ${competitionInfo.currentSeason.currentMatchday}`
-    : `${MATCHDAY}: `;
-*/
+  //const [seasonSelectValue, setSeasonSelectValue] = useState(2020);
+  const [stageSelectValue, setStageSelectValue] = useState(stageId);
+
   useEffect(() => {
-    Promise.all([getCalendarData(id), getCompetitionInfo(id)])
+    Promise.all([getCalendarData(id, seasonId), getCompetitionInfo(id)])
       .then(([data, info]) => {
         const matchDaysSortedByNumber = data.matches.reduce((acc, match) => {
           if (match.matchday) {
@@ -70,15 +58,20 @@ function CompetitionCalendar({ getCalendarData, getCompetitionInfo }) {
       .catch((err) => {
         console.log(err);
       });
-  }, [getCalendarData, getCompetitionInfo, id]);
+  }, [getCalendarData, getCompetitionInfo, id, seasonId]);
+
+  const handleSeasonSelectChange = useCallback(() => {
+    history.push(
+      `/competitions/${id}/season/${seasonSelectInput.current.value}/stage/${stageSelectValue}`,
+    );
+  }, [history, stageSelectValue, id]);
 
   const handleStageSelectChange = useCallback(() => {
     setStageSelectValue(stageSelectInput.current.value);
-  }, []);
-
-  const handleSeasonSelectChange = useCallback(() => {
-    setSeasonSelectValue(seasonSelectInput.current.value);
-  }, []);
+    history.push(
+      `/competitions/${id}/season/${seasonSelectInput.current.value}/stage/${stageSelectInput.current.value}`,
+    );
+  }, [history, id]);
 
   return (
     <section className="competition-calendar">
@@ -98,20 +91,30 @@ function CompetitionCalendar({ getCalendarData, getCompetitionInfo }) {
 
           <div className="competition-calendar__season-select">
             <span className="competition-calendar__season">{SEASON}</span>
-            <select onChange={handleSeasonSelectChange} ref={seasonSelectInput}>
-              {competitionInfo.seasons.map((season) => (
-                <option value={`${season.startDate.slice(0, 4)} / ${season.endDate.slice(0, 4)}`}>
-                  {`${season.startDate.slice(0, 4)} / ${season.endDate.slice(0, 4)}`}
-                </option>
-              ))}
+
+            <select onChange={handleSeasonSelectChange} ref={seasonSelectInput} value={seasonId}>
+              {competitionInfo.seasons &&
+                competitionInfo.seasons.map((season) => (
+                  <option key={season.id} value={season.startDate.slice(0, 4)}>
+                    {`${season.startDate.slice(0, 4)} / ${season.endDate.slice(0, 4)}`}
+                  </option>
+                ))}
             </select>
           </div>
 
           <div className="competition-calendar__matchday-select">
             <span className="competition-calendar__matchday">{MATCHDAY}</span>
-            <select onChange={handleStageSelectChange} ref={stageSelectInput} name="stage">
-              {Object.keys(calendarData).map((key) => (
-                <option value={key}>{key}</option>
+
+            <select
+              onChange={handleStageSelectChange}
+              ref={stageSelectInput}
+              name="stage"
+              value={stageId}
+            >
+              {Object.keys(calendarData).map((calendarDataKey, index) => (
+                <option key={index} value={calendarDataKey}>
+                  {calendarDataKey}
+                </option>
               ))}
             </select>
           </div>

@@ -47,9 +47,7 @@ export const getTeamsData = () => {
 
 export const getCompetitionCalendar = (competitionId, seasonStartDate) => {
   return fetch(
-    `${API_URL}${PATH_TO.COMPETITIONS}/${competitionId}${PATH_TO.MATCHES}${
-      seasonStartDate ? `?season=${seasonStartDate}` : ''
-    }`,
+    `${API_URL}${PATH_TO.COMPETITIONS}/${competitionId}${PATH_TO.MATCHES}?season=${seasonStartDate}`,
     {
       method: 'GET',
       headers: {
