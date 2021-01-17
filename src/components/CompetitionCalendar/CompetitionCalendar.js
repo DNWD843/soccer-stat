@@ -10,8 +10,6 @@ function CompetitionCalendar({ getCalendarData, getCompetitionInfo }) {
   const history = useHistory();
   let { id, seasonId, stageId } = useParams();
 
-  console.log({ id, seasonId });
-
   const {
     TITLE,
     BACK_TO_COMPETITIONS_LIST_LINK_TEXT,

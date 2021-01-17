@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect, useHistory } from 'react-router-dom';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import CardsList from '../CardsList/CardsList';
@@ -18,6 +18,8 @@ import {
 import * as to from '../../utils/routesMap';
 
 function App() {
+  const history = useHistory();
+
   const [competitionsList, setCompetitionsList] = useState([]);
   const [teamsList, setTeamsList] = useState([]);
 
@@ -55,6 +57,35 @@ function App() {
       });
   }, []);
 
+  const handleClickOnCompetitionCard = useCallback(
+    (id) => {
+      getCompetitionInfo(id)
+        .then((info) => {
+          console.log({ info });
+          history.push(
+            `${history.location.pathname}/${id}/season/${info.currentSeason.startDate.slice(
+              0,
+              4,
+            )}/stage/${info.currentSeason.currentMatchday}`,
+          );
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    [history],
+  );
+
+  const handleClickOnTeamCard = useCallback((id) => {
+    getTeamInfo(id)
+      .then((teamInfo) => {
+        console.log({ teamInfo });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
+
   useEffect(() => {
     getFullData();
   }, [getFullData]);
@@ -69,10 +100,10 @@ function App() {
             <Redirect to={to.COMPETITIONS} />
           </Route>
           <Route path={to.COMPETITIONS} exact>
-            <CardsList cardsList={competitionsList} />
+            <CardsList cardsList={competitionsList} getInfo={handleClickOnCompetitionCard} />
           </Route>
           <Route path={to.TEAMS} exact>
-            <CardsList cardsList={teamsList} />
+            <CardsList cardsList={teamsList} getInfo={handleClickOnTeamCard} />
           </Route>
           <Route path={`${to.COMPETITIONS}/:id`} exact>
             <CompetitionCalendar

@@ -1,26 +1,11 @@
 import pathToDefaultImage from '../../images/soccer-ball.svg';
 import { useCallback } from 'react';
-import { useHistory } from 'react-router-dom';
-import { getCompetitionInfo } from '../../utils/Api';
 import './Card.css';
 
-function Card({ id, title, country, image }) {
-  const history = useHistory();
-
+function Card({ id, title, country, image, getInfo }) {
   const handleClickOnCard = useCallback(() => {
-    getCompetitionInfo(id)
-      .then((info) => {
-        history.push(
-          `${history.location.pathname}/${id}/season/${info.currentSeason.startDate.slice(
-            0,
-            4,
-          )}/stage/${info.currentSeason.currentMatchday}`,
-        );
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [history, id]);
+    getInfo(id);
+  }, [getInfo, id]);
 
   return (
     <li onClick={handleClickOnCard} className="card cards__item">
