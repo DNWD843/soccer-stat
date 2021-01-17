@@ -1,4 +1,4 @@
-import './CompetitionCalendarTable.css';
+import './CompetitionCalendarTableStroke.css';
 
 function CompetitionCalendarTable({ match }) {
   const date = new Date(match.utcDate).toLocaleString().slice(0, 10);

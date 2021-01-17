@@ -3,7 +3,7 @@ import { forCompetitionCalendar as config } from '../../configs/configForCompone
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import pathToBallImage from '../../images/soccer-ball.svg';
-import CompetitionCalendarTable from '../CompetitionCalendarTable/CompetitionCalendarTable';
+import CompetitionCalendarTableStroke from '../CompetitionCalendarTableStroke/CompetitionCalendarTableStroke';
 import './CompetitionCalendar.css';
 
 function CompetitionCalendar({ getCalendarData, getCompetitionInfo }) {
@@ -148,7 +148,7 @@ function CompetitionCalendar({ getCalendarData, getCompetitionInfo }) {
         <tbody>
           {competitionInfo.currentSeason &&
             calendarData[stageSelectValue].map((match) => (
-              <CompetitionCalendarTable key={match.id} match={match} />
+              <CompetitionCalendarTableStroke key={match.id} match={match} />
             ))}
         </tbody>
       </table>

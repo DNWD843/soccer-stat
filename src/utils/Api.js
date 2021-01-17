@@ -45,13 +45,18 @@ export const getTeamsData = () => {
   });
 };
 
-export const getCompetitionCalendar = (competitionId) => {
-  return fetch(`${API_URL}${PATH_TO.COMPETITIONS}/${competitionId}${PATH_TO.MATCHES}`, {
-    method: 'GET',
-    headers: {
-      'X-Auth-Token': `${API_KEY}`,
+export const getCompetitionCalendar = (competitionId, seasonStartDate) => {
+  return fetch(
+    `${API_URL}${PATH_TO.COMPETITIONS}/${competitionId}${PATH_TO.MATCHES}${
+      seasonStartDate ? `?season=${seasonStartDate}` : ''
+    }`,
+    {
+      method: 'GET',
+      headers: {
+        'X-Auth-Token': `${API_KEY}`,
+      },
     },
-  }).then((res) => {
+  ).then((res) => {
     if (res.ok) {
       return res.json();
     }
