@@ -51,8 +51,8 @@ export const forTeamCalendar = {
 export const forCompetitionCalendar = {
   TITLE: 'Расписание игр',
   BACK_TO_COMPETITIONS_LIST_LINK_TEXT: 'Вернуться к списку турниров',
-  SEASON: 'Сезон',
-  MATCHDAY: 'Тур',
+  SEASON: 'Сезон: ',
+  MATCHDAY: 'Тур: ',
   DATE: 'Дата',
   HOMETEAM: 'Хозяева',
   SCORE: 'Счет',

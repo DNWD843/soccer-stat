@@ -1,6 +1,6 @@
 import { COMPETITIONS } from '../../utils/routesMap';
 import { forCompetitionCalendar as config } from '../../configs/configForComponents';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import pathToBallImage from '../../images/soccer-ball.svg';
 import CompetitionCalendarTable from '../CompetitionCalendarTable/CompetitionCalendarTable';
@@ -21,9 +21,21 @@ function CompetitionCalendar({ getCalendarData, getCompetitionInfo }) {
     STATUS,
   } = config;
 
+  const stageSelectInput = useRef(null);
+  const seasonSelectInput = useRef(null);
+
   const [calendarData, setCalendarData] = useState([]);
   const [competitionInfo, setCompetitionInfo] = useState({});
-
+  const [seasonSelectValue, setSeasonSelectValue] = useState(
+    competitionInfo.currentSeason
+      ? new Date(competitionInfo.currentSeason.startDate).getFullYear() /
+          new Date(competitionInfo.currentSeason.endDate).getFullYear()
+      : 2020,
+  );
+  const [stageSelectValue, setStageSelectValue] = useState(
+    competitionInfo.currentSeason ? competitionInfo.currentSeason.currentMatchday : 1,
+  );
+  /*
   const currentSeasonInfo = competitionInfo.currentSeason
     ? `${SEASON}: ${new Date(competitionInfo.currentSeason.startDate).getFullYear()}/${new Date(
         competitionInfo.currentSeason.endDate,
@@ -32,7 +44,7 @@ function CompetitionCalendar({ getCalendarData, getCompetitionInfo }) {
   const currentManchDay = competitionInfo.currentSeason
     ? `${MATCHDAY}: ${competitionInfo.currentSeason.currentMatchday}`
     : `${MATCHDAY}: `;
-
+*/
   useEffect(() => {
     Promise.all([getCalendarData(id), getCompetitionInfo(id)])
       .then(([data, info]) => {
@@ -60,6 +72,14 @@ function CompetitionCalendar({ getCalendarData, getCompetitionInfo }) {
       });
   }, [getCalendarData, getCompetitionInfo, id]);
 
+  const handleStageSelectChange = useCallback(() => {
+    setStageSelectValue(stageSelectInput.current.value);
+  }, []);
+
+  const handleSeasonSelectChange = useCallback(() => {
+    setSeasonSelectValue(seasonSelectInput.current.value);
+  }, []);
+
   return (
     <section className="competition-calendar">
       <h2 className="competition-calendar__title">{TITLE}</h2>
@@ -67,7 +87,7 @@ function CompetitionCalendar({ getCalendarData, getCompetitionInfo }) {
       <div className="competition-calendar__info">
         <img
           src={competitionInfo.emblemUrl || pathToBallImage}
-          alt="логотип футбольного клуба"
+          alt="логотип футбольного турнира"
           className="competition-calendar__image"
         />
         <div className="competition-calendar__description">
@@ -75,8 +95,26 @@ function CompetitionCalendar({ getCalendarData, getCompetitionInfo }) {
           <p className="competition-calendar__competition-country-name">
             {competitionInfo.area ? competitionInfo.area.name : ''}
           </p>
-          <span className="competition-calendar__season">{currentSeasonInfo}</span>
-          <span className="competition-calendar__matchday">{currentManchDay}</span>
+
+          <div className="competition-calendar__season-select">
+            <span className="competition-calendar__season">{SEASON}</span>
+            <select onChange={handleSeasonSelectChange} ref={seasonSelectInput}>
+              {competitionInfo.seasons.map((season) => (
+                <option value={`${season.startDate.slice(0, 4)} / ${season.endDate.slice(0, 4)}`}>
+                  {`${season.startDate.slice(0, 4)} / ${season.endDate.slice(0, 4)}`}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="competition-calendar__matchday-select">
+            <span className="competition-calendar__matchday">{MATCHDAY}</span>
+            <select onChange={handleStageSelectChange} ref={stageSelectInput} name="stage">
+              {Object.keys(calendarData).map((key) => (
+                <option value={key}>{key}</option>
+              ))}
+            </select>
+          </div>
         </div>
         <Link className="competition-calendar__link" to={COMPETITIONS}>
           {BACK_TO_COMPETITIONS_LIST_LINK_TEXT}
@@ -109,7 +147,7 @@ function CompetitionCalendar({ getCalendarData, getCompetitionInfo }) {
 
         <tbody>
           {competitionInfo.currentSeason &&
-            calendarData['2'].map((match) => (
+            calendarData[stageSelectValue].map((match) => (
               <CompetitionCalendarTable key={match.id} match={match} />
             ))}
         </tbody>
