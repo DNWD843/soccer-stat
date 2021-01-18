@@ -44,8 +44,13 @@ export const forTeamCalendar = {
   COMPETITION: 'Турнир',
   OPPONENT: 'Соперник',
   SCORE: 'Счет',
-  WINNER: 'Счет',
+  WINNER: 'Победитель',
   STATUS: 'Статус',
+  YEAR: 'Год: ',
+  DATE_FROM_LABEL: 'Дата с',
+  DARE_FROM_PLACEHOLDER: 'Дата в формате 16.01.2021',
+  DATE_TO_LABEL: 'Дата по',
+  DATE_TO_PLACEHOLDER: 'Дата в формате 20.01.2021',
 };
 
 export const forCompetitionCalendar = {
@@ -59,4 +64,8 @@ export const forCompetitionCalendar = {
   AWAYTEAM: 'Гости',
   GROUP: 'Группа',
   STATUS: 'Статус',
+};
+
+export const forCardsList = {
+  SELECT_INPUT_DEFAULT_OPTION_TEXT: 'Выбрать из списка:',
 };

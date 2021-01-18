@@ -1,20 +1,25 @@
 import Card from '../Card/Card';
 import { useRef, useCallback } from 'react';
-import { useHistory } from 'react-router-dom';
+import { forCardsList as config } from '../../configs/configForComponents';
 import './CardsList.css';
 
 function CardsList({ cardsList, getInfo }) {
+  const { SELECT_INPUT_DEFAULT_OPTION_TEXT } = config;
   const selectInput = useRef(null);
 
-  const handleSelectCard = useCallback(() => {
-    console.log(selectInput.current.value);
-  });
+  const handleChangeSelect = useCallback(
+    (evt) => {
+      evt.preventDefault();
+      getInfo(selectInput.current.value);
+    },
+    [getInfo],
+  );
 
   return (
     <>
-      <select onChange={handleSelectCard} ref={selectInput} value={undefined}>
+      <select onChange={handleChangeSelect} ref={selectInput} value={undefined}>
         <option key={1} value={undefined}>
-          Выбрать из списка
+          {SELECT_INPUT_DEFAULT_OPTION_TEXT}
         </option>
         {cardsList.map(({ id, name }) => (
           <option key={id} value={id}>

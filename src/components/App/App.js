@@ -61,7 +61,6 @@ function App() {
     (id) => {
       getCompetitionInfo(id)
         .then((info) => {
-          console.log({ info });
           history.push(
             `${history.location.pathname}/${id}/season/${info.currentSeason.startDate.slice(
               0,
@@ -76,15 +75,18 @@ function App() {
     [history],
   );
 
-  const handleClickOnTeamCard = useCallback((id) => {
-    getTeamInfo(id)
-      .then((teamInfo) => {
-        console.log({ teamInfo });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  });
+  const handleClickOnTeamCard = useCallback(
+    (id) => {
+      getTeamInfo(id)
+        .then((teamInfo) => {
+          history.push(`${history.location.pathname}/${id}`);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    [history],
+  );
 
   useEffect(() => {
     getFullData();
@@ -105,12 +107,12 @@ function App() {
           <Route path={to.TEAMS} exact>
             <CardsList cardsList={teamsList} getInfo={handleClickOnTeamCard} />
           </Route>
-          <Route path={`${to.COMPETITIONS}/:id`} exact>
+          {/* <Route path={`${to.COMPETITIONS}/:id`} exact>
             <CompetitionCalendar
               getCalendarData={getCompetitionCalendar}
               getCompetitionInfo={getCompetitionInfo}
             />
-          </Route>
+          </Route>*/}
           <Route path={`${to.TEAMS}/:id`} exact>
             <TeamCalendar getCalendarData={getTeamCalendar} getTeamInfo={getTeamInfo} />
           </Route>
