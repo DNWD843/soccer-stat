@@ -48,17 +48,17 @@ export const forTeamCalendar = {
   STATUS: 'Статус',
   YEAR: 'Год: ',
   LABEL_DATE_FROM: 'Дата с',
-  PLACEHOLDER_DATE_FROM: 'Дата в формате 16.01.2021',
+  PLACEHOLDER_DATE_FROM: 'в формате 16.01.2021',
   LABEL_DATE_TO: 'Дата по',
-  PLACEHOLDER_DATE_TO: 'Дата в формате 20.01.2021',
+  PLACEHOLDER_DATE_TO: 'в формате 20.01.2021',
   SUBMIT_BUTTON_TEXT: 'Показать',
 };
 
 export const forCompetitionCalendar = {
-  TITLE: 'Расписание игр',
+  TITLE: 'Календарь игр',
   BACK_TO_COMPETITIONS_LIST_LINK_TEXT: 'Вернуться к списку турниров',
   SEASON: 'Сезон: ',
-  MATCHDAY: 'Тур: ',
+  MONTH: 'Месяц: ',
   DATE: 'Дата',
   HOMETEAM: 'Хозяева',
   SCORE: 'Счет',
@@ -66,9 +66,9 @@ export const forCompetitionCalendar = {
   GROUP: 'Группа',
   STATUS: 'Статус',
   LABEL_DATE_FROM: 'Дата с',
-  PLACEHOLDER_DATE_FROM: 'Дата в формате 16.01.2021',
+  PLACEHOLDER_DATE_FROM: 'в формате ГГГГ-ММ-ДД',
   LABEL_DATE_TO: 'Дата по',
-  PLACEHOLDER_DATE_TO: 'Дата в формате 20.01.2021',
+  PLACEHOLDER_DATE_TO: 'в формате ГГГГ-ММ-ДД',
   SUBMIT_BUTTON_TEXT: 'Показать',
 };
 

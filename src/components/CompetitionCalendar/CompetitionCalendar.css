@@ -22,7 +22,9 @@
 .competition-calendar__image {
   width: 150px;
   object-fit: contain;
+  object-position: top;
   margin-right: 25px;
+  margin-top: 10px;
   color: #fff;
 }
 
@@ -49,12 +51,10 @@
 
 .competition-calendar__season {
   color: #fff;
-  margin: 0 0 10px;
 }
 
-.competition-calendar__matchday {
+.competition-calendar__month {
   color: #fff;
-  margin: 0 0 10px;
 }
 
 .competition-calendar__link {
@@ -79,4 +79,105 @@
   box-sizing: border-box;
   border-bottom: 1px solid grey;
   border-top: 1px solid grey;
+}
+
+.matchday-table-head__cell_size_50 {
+  width: 50px;
+}
+
+.matchday-table-head__cell_size_60 {
+  width: 60px;
+}
+
+.matchday-table-head__cell_size_90 {
+  width: 90px;
+}
+
+.matchday-table-head__cell_size_100 {
+  width: 100px;
+}
+
+.matchday-table-head__cell_size_135 {
+  width: 135px;
+}
+
+.matchday-table-head__cell_size_220 {
+  width: 50px;
+}
+
+.competition-calendar__season-select {
+  width: 210px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0 10px;
+}
+
+.competition-calendar__season-select-input {
+  width: 150px;
+}
+
+.competition-calendar__month-select {
+  width: 210px;
+  margin: 0 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.competition-calendar__month-select-input {
+  width: 150px;
+}
+
+.form {
+  width: 300px;
+  color: #b6bcbf;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.competition-calendar_form {
+}
+
+.form__title {
+  font-size: 18px;
+  margin: 0;
+}
+
+.form__field {
+  margin: 0 0 20px;
+  width: 290px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.form__label {
+  font-size: 16px;
+}
+
+.form__input {
+  width: 200px;
+}
+.form__input-error {
+  position: absolute;
+  left: 70px;
+  bottom: -22px;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  height: 2em;
+  color: #ff0000;
+}
+
+.form__submit-button {
+  width: 150px;
+  margin: 0 auto;
 }

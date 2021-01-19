@@ -9,15 +9,15 @@ import './CompetitionCalendar.css';
 
 function CompetitionCalendar({ getCalendarData, getCompetitionInfo }) {
   const history = useHistory();
-  let { id, seasonId, stageId, dateFromId, dateToId } = useParams();
-  console.log({ id, seasonId, stageId, dateFromId, dateToId });
-  const { values, resetForm, isFormValid, handleInputChange } = useFormWithValidation();
+  let { id, seasonId, monthId, dateFromId, dateToId } = useParams();
+
+  const { values, resetForm, isFormValid, handleInputChange, errors } = useFormWithValidation();
   const { dateFrom, dateTo } = values;
 
   const {
     TITLE,
     BACK_TO_COMPETITIONS_LIST_LINK_TEXT,
-    MATCHDAY,
+    MONTH,
     SEASON,
     DATE,
     HOMETEAM,
@@ -32,38 +32,44 @@ function CompetitionCalendar({ getCalendarData, getCompetitionInfo }) {
     SUBMIT_BUTTON_TEXT,
   } = config;
 
-  const stageSelectInput = useRef(null);
+  const monthSelectInput = useRef(null);
   const seasonSelectInput = useRef(null);
 
   const [calendarData, setCalendarData] = useState({});
   const [competitionInfo, setCompetitionInfo] = useState({});
-  //const [seasonSelectValue, setSeasonSelectValue] = useState(2020);
-  //const [stageSelectValue, setStageSelectValue] = useState(stageId);
-  console.log({ calendarData, competitionInfo });
+
+  const monthsList = [
+    'Январь',
+    'Февраль',
+    'Март',
+    'Апрель',
+    'Май',
+    'Июнь',
+    'Июль',
+    'Август',
+    'Сентябрь',
+    'Октябрь',
+    'Ноябрь',
+    'Декабрь',
+  ];
+
   useEffect(() => {
     resetForm();
-    seasonId && stageId
+    seasonId && monthId
       ? Promise.all([getCalendarData(id, seasonId), getCompetitionInfo(id)])
           .then(([data, info]) => {
             const matchDaysSortedByNumber = data.matches.reduce((acc, match) => {
-              if (match.matchday) {
-                if (!acc[match.matchday]) {
-                  acc[match.matchday] = [match];
-                } else {
-                  acc[match.matchday].push(match);
-                }
+              const matchDate = new Date(match.utcDate).getMonth();
+              if (!acc[matchDate]) {
+                acc[matchDate] = [match];
               } else {
-                if (!acc[match.stage]) {
-                  acc[match.stage] = [match];
-                } else {
-                  acc[match.stage].push(match);
-                }
+                acc[matchDate].push(match);
               }
+
               return acc;
             }, {});
             setCalendarData(matchDaysSortedByNumber);
             setCompetitionInfo(info);
-            console.log({ calendarData, competitionInfo });
           })
           .catch((err) => {
             console.log(err);
@@ -80,23 +86,23 @@ function CompetitionCalendar({ getCalendarData, getCompetitionInfo }) {
             console.log(err);
           });
     //setStageSelectValue(1);
-  }, [resetForm, getCalendarData, getCompetitionInfo, id, stageId, seasonId, dateFromId, dateToId]);
+  }, [resetForm, getCalendarData, getCompetitionInfo, id, monthId, seasonId, dateFromId, dateToId]);
 
   const handleSeasonSelectChange = useCallback(() => {
     const selectedSeason = competitionInfo.seasons.find(
       (season) => season.startDate.slice(0, 4) === seasonSelectInput.current.value,
     );
     history.push(
-      `/competitions/${id}/season/${selectedSeason.startDate.slice(0, 4)}/stage/${
-        selectedSeason.currentMatchday
-      }`,
+      `/competitions/${id}/season/${selectedSeason.startDate.slice(0, 4)}/month/${new Date(
+        selectedSeason.startDate,
+      ).getMonth()}`,
     );
   }, [history, competitionInfo.seasons, id]);
 
   const handleStageSelectChange = useCallback(() => {
     //setStageSelectValue(stageSelectInput.current.value);
     history.push(
-      `/competitions/${id}/season/${seasonSelectInput.current.value}/stage/${stageSelectInput.current.value}`,
+      `/competitions/${id}/season/${seasonSelectInput.current.value}/month/${monthSelectInput.current.value}`,
     );
   }, [history, id]);
 
@@ -128,7 +134,12 @@ function CompetitionCalendar({ getCalendarData, getCompetitionInfo }) {
           <div className="competition-calendar__season-select">
             <span className="competition-calendar__season">{SEASON}</span>
 
-            <select onChange={handleSeasonSelectChange} ref={seasonSelectInput} value={seasonId}>
+            <select
+              onChange={handleSeasonSelectChange}
+              ref={seasonSelectInput}
+              value={seasonId}
+              className="competition-calendar__season-select-input"
+            >
               <option key={1} value={undefined}>
                 Выбрать сезон
               </option>
@@ -141,22 +152,23 @@ function CompetitionCalendar({ getCalendarData, getCompetitionInfo }) {
             </select>
           </div>
 
-          <div className="competition-calendar__matchday-select">
-            <span className="competition-calendar__matchday">{MATCHDAY}</span>
+          <div className="competition-calendar__month-select">
+            <span className="competition-calendar__month">{MONTH}</span>
 
             <select
               onChange={handleStageSelectChange}
-              ref={stageSelectInput}
+              ref={monthSelectInput}
               name="stage"
-              value={stageId}
-              disabled={!stageId}
+              value={monthId}
+              disabled={!monthId}
+              className="competition-calendar__month-select-input"
             >
               <option key={1} value={undefined}>
                 Выбрать тур
               </option>
               {Object.keys(calendarData).map((calendarDataKey, index) => (
                 <option key={index} value={calendarDataKey}>
-                  {calendarDataKey}
+                  {monthsList[calendarDataKey]}
                 </option>
               ))}
             </select>
@@ -174,7 +186,11 @@ function CompetitionCalendar({ getCalendarData, getCompetitionInfo }) {
                 onChange={handleInputChange}
                 className="form__input"
                 placeholder={PLACEHOLDER_DATE_FROM}
+                required
               ></input>
+              <span className="form__input-error" id="dateFrom-input-error">
+                {errors.dateFrom || ''}
+              </span>
             </div>
             <div className="form__field">
               <label className="form__label">{LABEL_DATE_TO}</label>
@@ -186,9 +202,13 @@ function CompetitionCalendar({ getCalendarData, getCompetitionInfo }) {
                 onChange={handleInputChange}
                 className="form__input"
                 placeholder={PLACEHOLDER_DATE_TO}
+                required
               ></input>
+              <span className="form__input-error" id="dateTo-input-error">
+                {errors.dateTo || ''}
+              </span>
             </div>
-            <button type="submit" disabled={!isFormValid}>
+            <button className="form__submit-button" type="submit" disabled={!isFormValid}>
               {SUBMIT_BUTTON_TEXT}
             </button>
           </form>
@@ -223,8 +243,8 @@ function CompetitionCalendar({ getCalendarData, getCompetitionInfo }) {
         </thead>
 
         <tbody>
-          {competitionInfo.currentSeason && calendarData[stageId] && seasonId && stageId
-            ? calendarData[stageId].map((match) => (
+          {competitionInfo.currentSeason && calendarData[monthId] && seasonId && monthId
+            ? calendarData[monthId].map((match) => (
                 <CompetitionCalendarTableStroke key={match.id} match={match} />
               ))
             : null}

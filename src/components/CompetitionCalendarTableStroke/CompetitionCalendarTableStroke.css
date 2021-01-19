@@ -5,5 +5,26 @@
   margin: 5px;
 }
 
-.matchday-table-stroke__date {
+.matchday-table__cell_size_50 {
+  width: 50px;
+}
+
+.matchday-table__cell_size_60 {
+  width: 60px;
+}
+
+.matchday-table__cell_size_90 {
+  width: 90px;
+}
+
+.matchday-table__cell_size_100 {
+  width: 100px;
+}
+
+.matchday-table__cell_size_135 {
+  width: 135px;
+}
+
+.matchday-table__cell_size_220 {
+  width: 220px;
 }

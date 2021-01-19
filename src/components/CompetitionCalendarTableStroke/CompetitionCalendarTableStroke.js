@@ -6,29 +6,29 @@ function CompetitionCalendarTable({ match }) {
   return (
     <>
       <tr className="matchday-table-stroke matchday-table__stroke">
-        <td className="matchday-table__cell">
+        <td className="matchday-table__cell matchday-table__cell_size_100">
           <span className="matchday-table-stroke__date">{date}</span>
         </td>
-        <td className="matchday-table__cell">
+        <td className="matchday-table__cell matchday-table__cell_size_60">
           <span className="matchday-table-stroke__time">{time}</span>
         </td>
-        <td className="matchday-table__cell">
+        <td className="matchday-table__cell matchday-table__cell_size_220">
           <span className="matchday-table-stroke__hometeam">{match.homeTeam.name}</span>
         </td>
-        <td className="matchday-table__cell">
+        <td className="matchday-table__cell matchday-table__cell_size_50">
           <span className="matchday-table-stroke__score">
             {`${
               match.score.fullTime.homeTeam !== null ? match.score.fullTime.homeTeam : ' -- '
             } : ${match.score.fullTime.awayTeam !== null ? match.score.fullTime.awayTeam : ' -- '}`}
           </span>
         </td>
-        <td className="matchday-table__cell">
+        <td className="matchday-table__cell matchday-table__cell_size_220">
           <span className="matchday-table-stroke__awayteam">{match.awayTeam.name}</span>
         </td>
-        <td className="matchday-table__cell">
+        <td className="matchday-table__cell matchday-table__cell_size_135">
           <span className="matchday-table-stroke__group">{match.group}</span>
         </td>
-        <td className="matchday-table__cell">
+        <td className="matchday-table__cell matchday-table__cell_size_135">
           <span className="matchday-table-stroke__status">{match.status}</span>
         </td>
       </tr>

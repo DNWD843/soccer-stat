@@ -62,11 +62,12 @@ function App() {
     (id) => {
       getCompetitionInfo(id)
         .then((info) => {
+          console.log(info);
           history.push(
             `${history.location.pathname}/${id}/season/${info.currentSeason.startDate.slice(
               0,
               4,
-            )}/stage/${info.currentSeason.currentMatchday}`,
+            )}/month/${new Date(info.currentSeason.startDate).getMonth()}`,
           );
         })
         .catch((err) => {
@@ -117,7 +118,7 @@ function App() {
           <Route path={`${to.TEAMS}/:id`} exact>
             <TeamCalendar getCalendarData={getTeamCalendar} getTeamInfo={getTeamInfo} />
           </Route>
-          <Route path={`${to.COMPETITIONS}/:id/season/:seasonId/stage/:stageId`}>
+          <Route path={`${to.COMPETITIONS}/:id/season/:seasonId/month/:monthId`}>
             <CompetitionCalendar
               getCalendarData={getCompetitionCalendarBySeason}
               getCompetitionInfo={getCompetitionInfo}
