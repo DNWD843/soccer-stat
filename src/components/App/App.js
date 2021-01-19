@@ -10,10 +10,11 @@ import './App.css';
 import {
   getCompetitionsData,
   getTeamsData,
-  getCompetitionCalendar,
+  getCompetitionCalendarBySeason,
   getTeamCalendar,
   getTeamInfo,
   getCompetitionInfo,
+  getCompetitionCalendarByPeriod,
 } from '../../utils/Api';
 import * as to from '../../utils/routesMap';
 
@@ -118,7 +119,13 @@ function App() {
           </Route>
           <Route path={`${to.COMPETITIONS}/:id/season/:seasonId/stage/:stageId`}>
             <CompetitionCalendar
-              getCalendarData={getCompetitionCalendar}
+              getCalendarData={getCompetitionCalendarBySeason}
+              getCompetitionInfo={getCompetitionInfo}
+            />
+          </Route>
+          <Route path={`${to.COMPETITIONS}/:id/period/:dateFromId/:dateToId`}>
+            <CompetitionCalendar
+              getCalendarData={getCompetitionCalendarByPeriod}
               getCompetitionInfo={getCompetitionInfo}
             />
           </Route>

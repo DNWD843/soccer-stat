@@ -47,10 +47,11 @@ export const forTeamCalendar = {
   WINNER: 'Победитель',
   STATUS: 'Статус',
   YEAR: 'Год: ',
-  DATE_FROM_LABEL: 'Дата с',
-  DARE_FROM_PLACEHOLDER: 'Дата в формате 16.01.2021',
-  DATE_TO_LABEL: 'Дата по',
-  DATE_TO_PLACEHOLDER: 'Дата в формате 20.01.2021',
+  LABEL_DATE_FROM: 'Дата с',
+  PLACEHOLDER_DATE_FROM: 'Дата в формате 16.01.2021',
+  LABEL_DATE_TO: 'Дата по',
+  PLACEHOLDER_DATE_TO: 'Дата в формате 20.01.2021',
+  SUBMIT_BUTTON_TEXT: 'Показать',
 };
 
 export const forCompetitionCalendar = {
@@ -64,6 +65,11 @@ export const forCompetitionCalendar = {
   AWAYTEAM: 'Гости',
   GROUP: 'Группа',
   STATUS: 'Статус',
+  LABEL_DATE_FROM: 'Дата с',
+  PLACEHOLDER_DATE_FROM: 'Дата в формате 16.01.2021',
+  LABEL_DATE_TO: 'Дата по',
+  PLACEHOLDER_DATE_TO: 'Дата в формате 20.01.2021',
+  SUBMIT_BUTTON_TEXT: 'Показать',
 };
 
 export const forCardsList = {

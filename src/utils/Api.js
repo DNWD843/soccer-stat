@@ -45,7 +45,7 @@ export const getTeamsData = () => {
   });
 };
 
-export const getCompetitionCalendar = (competitionId, seasonStartDate) => {
+export const getCompetitionCalendarBySeason = (competitionId, seasonStartDate) => {
   return fetch(
     `${API_URL}${PATH_TO.COMPETITIONS}/${competitionId}${PATH_TO.MATCHES}?season=${seasonStartDate}`,
     {
@@ -101,5 +101,22 @@ export const getCompetitionInfo = (competitionId) => {
       return res.json();
     }
     return Promise.reject(`Статус ответа: ${res.errorCode}${res.message}`);
+  });
+};
+
+export const getCompetitionCalendarByPeriod = (competitionId, dateFrom, dateTo) => {
+  return fetch(
+    `${API_URL}${PATH_TO.COMPETITIONS}/${competitionId}${PATH_TO.MATCHES}?dateFrom=${dateFrom}&dateTo=${dateTo}`,
+    {
+      method: 'GET',
+      headers: {
+        'X-Auth-Token': `${API_KEY}`,
+      },
+    },
+  ).then((res) => {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Статус ответа: ${res.status}`);
   });
 };
