@@ -70,8 +70,29 @@ export const forCompetitionCalendar = {
   LABEL_DATE_TO: 'Дата по',
   PLACEHOLDER_DATE_TO: 'в формате ГГГГ-ММ-ДД',
   SUBMIT_BUTTON_TEXT: 'Показать',
+  MONTHS_LIST: [
+    'Январь',
+    'Февраль',
+    'Март',
+    'Апрель',
+    'Май',
+    'Июнь',
+    'Июль',
+    'Август',
+    'Сентябрь',
+    'Октябрь',
+    'Ноябрь',
+    'Декабрь',
+  ],
+  SEASON_OPTION_TEXT: 'Выбрать сезон',
+  MONTH_OPTION_TEXT: 'Месяц',
+  FORM_TITLE_TEXT: 'Выберите период:',
 };
 
 export const forCardsList = {
   SELECT_INPUT_DEFAULT_OPTION_TEXT: 'Выбрать из списка:',
+};
+
+export const forPreloader = {
+  TITLE: 'Идет загрузка...',
 };

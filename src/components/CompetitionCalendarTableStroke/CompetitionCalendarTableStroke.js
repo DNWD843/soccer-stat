@@ -1,6 +1,6 @@
 import './CompetitionCalendarTableStroke.css';
 
-function CompetitionCalendarTable({ match }) {
+function CompetitionCalendarTableStroke({ match }) {
   const date = new Date(match.utcDate).toLocaleString().slice(0, 10);
   const time = new Date(match.utcDate).toLocaleTimeString().slice(0, 5);
   return (
@@ -36,4 +36,4 @@ function CompetitionCalendarTable({ match }) {
   );
 }
 
-export default CompetitionCalendarTable;
+export default CompetitionCalendarTableStroke;

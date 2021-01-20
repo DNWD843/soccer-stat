@@ -81,30 +81,6 @@
   border-top: 1px solid grey;
 }
 
-.matchday-table-head__cell_size_50 {
-  width: 50px;
-}
-
-.matchday-table-head__cell_size_60 {
-  width: 60px;
-}
-
-.matchday-table-head__cell_size_90 {
-  width: 90px;
-}
-
-.matchday-table-head__cell_size_100 {
-  width: 100px;
-}
-
-.matchday-table-head__cell_size_135 {
-  width: 135px;
-}
-
-.matchday-table-head__cell_size_220 {
-  width: 50px;
-}
-
 .competition-calendar__season-select {
   width: 210px;
   display: flex;
