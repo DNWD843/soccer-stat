@@ -10,13 +10,14 @@ import './CompetitionCalendar.css';
 function CompetitionCalendar({
   calendarData,
   competitionInfo,
-  handleChangeSeason,
-  handleSetDatePeriod,
+  getDataBySeasonId,
+  getDataByDatePeriod,
 }) {
   const history = useHistory();
   let { id, seasonId, monthId, dateFromId, dateToId } = useParams();
-  const monthSelectInput = useRef(null);
+
   const seasonSelectInput = useRef(null);
+  const monthSelectInput = useRef(null);
 
   const { values, resetForm, isFormValid, handleInputChange, errors } = useFormWithValidation();
   const { dateFrom, dateTo } = values;
@@ -45,11 +46,11 @@ function CompetitionCalendar({
 
   const getData = useCallback(() => {
     seasonId && monthId
-      ? handleChangeSeason(id, seasonId)
-      : dateFromId && dateToId && handleSetDatePeriod(id, dateFromId, dateToId);
-  }, [handleChangeSeason, handleSetDatePeriod, id, monthId, seasonId, dateFromId, dateToId]);
+      ? getDataBySeasonId(id, seasonId)
+      : getDataByDatePeriod(id, dateFromId, dateToId);
+  }, [getDataBySeasonId, getDataByDatePeriod, id, monthId, seasonId, dateFromId, dateToId]);
 
-  const handleSeasonSelectChange = useCallback(() => {
+  const handleChangeSeason = useCallback(() => {
     const selectedSeason = competitionInfo.seasons.find(
       (season) => season.startDate.slice(0, 4) === seasonSelectInput.current.value,
     );
@@ -60,7 +61,7 @@ function CompetitionCalendar({
     );
   }, [history, competitionInfo.seasons, id]);
 
-  const handleStageSelectChange = useCallback(() => {
+  const handleChangeMonth = useCallback(() => {
     history.push(
       `/competitions/${id}/season/${seasonSelectInput.current.value}/month/${monthSelectInput.current.value}`,
     );
@@ -100,7 +101,7 @@ function CompetitionCalendar({
             <span className="competition-calendar__season">{SEASON}</span>
 
             <select
-              onChange={handleSeasonSelectChange}
+              onChange={handleChangeSeason}
               ref={seasonSelectInput}
               value={seasonId}
               className="competition-calendar__season-select-input"
@@ -121,7 +122,7 @@ function CompetitionCalendar({
             <span className="competition-calendar__month">{MONTH}</span>
 
             <select
-              onChange={handleStageSelectChange}
+              onChange={handleChangeMonth}
               ref={monthSelectInput}
               name="stage"
               value={monthId}

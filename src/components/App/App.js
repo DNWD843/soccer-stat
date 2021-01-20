@@ -43,6 +43,8 @@ function App() {
               area: competition.area,
               name: competition.name,
               image: competition.area.ensignUrl,
+              currentSeason: competition.currentSeason.startDate.slice(0, 4),
+              currentSeasonMonth: new Date(competition.currentSeason.startDate).getMonth(),
             };
             return resultCompetitionData;
           });
@@ -68,44 +70,22 @@ function App() {
 
   const handleClickOnCompetitionCard = useCallback(
     (id) => {
-      setIsLoading(true);
-      getCompetitionInfo(id)
-        .then((info) => {
-          history.push(
-            `${history.location.pathname}/${id}/season/${info.currentSeason.startDate.slice(
-              0,
-              4,
-            )}/month/${new Date(info.currentSeason.startDate).getMonth()}`,
-          );
-        })
-        .catch((err) => {
-          console.log(err);
-        })
-        .finally(() => {
-          setIsLoading(false);
-        });
+      const selectedCompetition = competitionsList.find((competition) => competition.id === id);
+      history.push(
+        `${history.location.pathname}/${id}/season/${selectedCompetition.currentSeason}/month/${selectedCompetition.currentSeasonMonth}`,
+      );
     },
-    [history],
+    [history, competitionsList],
   );
 
   const handleClickOnTeamCard = useCallback(
     (id) => {
-      setIsLoading(true);
-      getTeamInfo(id)
-        .then((teamInfo) => {
-          history.push(`${history.location.pathname}/${id}`);
-        })
-        .catch((err) => {
-          console.log(err);
-        })
-        .finally(() => {
-          setIsLoading(false);
-        });
+      history.push(`${history.location.pathname}/${id}`);
     },
     [history],
   );
 
-  const handleChangeSeason = useCallback((id, seasonId) => {
+  const getCompetitionDataBySeasonId = useCallback((id, seasonId) => {
     Promise.all([getCompetitionCalendarBySeason(id, seasonId), getCompetitionInfo(id)])
       .then(([data, info]) => {
         const matchDaysSortedByNumber = data.matches.reduce((acc, match) => {
@@ -115,7 +95,6 @@ function App() {
           } else {
             acc[matchDate].push(match);
           }
-
           return acc;
         }, {});
         setCalendarData(matchDaysSortedByNumber);
@@ -126,7 +105,7 @@ function App() {
       });
   }, []);
 
-  const handleSetDatePeriod = useCallback((id, dateFromId, dateToId) => {
+  const getCompetitionDataByDatePeriod = useCallback((id, dateFromId, dateToId) => {
     Promise.all([getCompetitionCalendarByPeriod(id, dateFromId, dateToId), getCompetitionInfo(id)])
       .then(([data, info]) => {
         setCalendarData(data);
@@ -154,10 +133,13 @@ function App() {
               <Redirect to={to.COMPETITIONS} />
             </Route>
             <Route path={to.COMPETITIONS} exact>
-              <CardsList cardsList={competitionsList} getInfo={handleClickOnCompetitionCard} />
+              <CardsList
+                cardsList={competitionsList}
+                handleSelectOfCard={handleClickOnCompetitionCard}
+              />
             </Route>
             <Route path={to.TEAMS} exact>
-              <CardsList cardsList={teamsList} getInfo={handleClickOnTeamCard} />
+              <CardsList cardsList={teamsList} handleSelectOfCard={handleClickOnTeamCard} />
             </Route>
             {/* <Route path={`${to.COMPETITIONS}/:id`} exact>
             <CompetitionCalendar
@@ -170,14 +152,14 @@ function App() {
             </Route>
             <Route path={`${to.COMPETITIONS}/:id/season/:seasonId/month/:monthId`}>
               <CompetitionCalendar
-                handleChangeSeason={handleChangeSeason}
+                getDataBySeasonId={getCompetitionDataBySeasonId}
                 calendarData={calendarData}
                 competitionInfo={competitionInfo}
               />
             </Route>
             <Route path={`${to.COMPETITIONS}/:id/period/:dateFromId/:dateToId`}>
               <CompetitionCalendar
-                handleSetDatePeriod={handleSetDatePeriod}
+                getDataByDatePeriod={getCompetitionDataByDatePeriod}
                 calendarData={calendarData}
                 competitionInfo={competitionInfo}
               />
