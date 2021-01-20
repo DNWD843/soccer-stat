@@ -7,13 +7,9 @@ function CardsList({ cardsList, handleSelectOfCard }) {
   const { SELECT_INPUT_DEFAULT_OPTION_TEXT } = config;
   const selectInput = useRef(null);
 
-  const handleChangeOptionOnSelectInput = useCallback(
-    (evt) => {
-      evt.preventDefault();
-      handleSelectOfCard(selectInput.current.value);
-    },
-    [handleSelectOfCard],
-  );
+  const handleChangeOptionOnSelectInput = () => {
+    handleSelectOfCard(+selectInput.current.value);
+  };
 
   return (
     <>
@@ -27,6 +23,7 @@ function CardsList({ cardsList, handleSelectOfCard }) {
           </option>
         ))}
       </select>
+
       <ul className="cards content__elements">
         {cardsList.map(({ id, name, area, image }) => (
           <Card

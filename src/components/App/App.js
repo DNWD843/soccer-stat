@@ -26,6 +26,8 @@ function App() {
   const [teamsList, setTeamsList] = useState([]);
   const [calendarData, setCalendarData] = useState({});
   const [competitionInfo, setCompetitionInfo] = useState({});
+  const [teamCalendarData, setTeamCalendarData] = useState([]);
+  const [teamInfo, setTeamInfo] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
   const getFullData = useCallback(() => {
@@ -116,6 +118,17 @@ function App() {
       });
   }, []);
 
+  const getTeamData = useCallback((id) => {
+    Promise.all([getTeamCalendar(id), getTeamInfo(id)])
+      .then(([data, info]) => {
+        setTeamCalendarData(data.matches);
+        setTeamInfo(info);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   useEffect(() => {
     getFullData();
   }, [getFullData]);
@@ -148,7 +161,11 @@ function App() {
             />
           </Route>*/}
             <Route path={`${to.TEAMS}/:id`} exact>
-              <TeamCalendar getCalendarData={getTeamCalendar} getTeamInfo={getTeamInfo} />
+              <TeamCalendar
+                getData={getTeamData}
+                teamCalendarData={teamCalendarData}
+                teamInfo={teamInfo}
+              />
             </Route>
             <Route path={`${to.COMPETITIONS}/:id/season/:seasonId/month/:monthId`}>
               <CompetitionCalendar

@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import TeamCalendarTable from '../TeamCalendarTable/TeamCalendarTable';
 import { TEAMS } from '../../utils/routesMap';
 import { forTeamCalendar as config } from '../../configs/configForComponents';
 import './TeamCalendar.css';
 
-function TeamCalendar({ getCalendarData, getTeamInfo }) {
+function TeamCalendar({ getData, teamCalendarData, teamInfo }) {
   let { id } = useParams();
   const {
     TITLE,
@@ -17,19 +17,10 @@ function TeamCalendar({ getCalendarData, getTeamInfo }) {
     WINNER,
     STATUS,
   } = config;
-  const [teamCalendarData, setTeamCalendarData] = useState([]);
-  const [teamInfo, setTeamInfo] = useState({});
 
   useEffect(() => {
-    Promise.all([getCalendarData(id), getTeamInfo(id)])
-      .then(([data, info]) => {
-        setTeamCalendarData(data.matches);
-        setTeamInfo(info);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [getCalendarData, getTeamInfo, id]);
+    getData(id);
+  }, [getData, id]);
 
   return (
     <section className="team-calendar">
