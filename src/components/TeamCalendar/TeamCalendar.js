@@ -1,22 +1,13 @@
 import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import TeamCalendarTable from '../TeamCalendarTable/TeamCalendarTable';
 import { TEAMS } from '../../utils/routesMap';
 import { forTeamCalendar as config } from '../../configs/configForComponents';
+import TeamCalendarTable from '../TeamCalendarTable/TeamCalendarTable';
+import SetDatePeriodForm from '../SetDatePeriodForm/SetDatePeriodForm';
 import './TeamCalendar.css';
-
 function TeamCalendar({ getData, teamCalendarData, teamInfo }) {
   let { id } = useParams();
-  const {
-    TITLE,
-    BACK_TO_TEAMS_LIST_LINK_TEXT,
-    DATE,
-    COMPETITION,
-    OPPONENT,
-    SCORE,
-    WINNER,
-    STATUS,
-  } = config;
+  const { TITLE, BACK_TO_TEAMS_LIST_LINK_TEXT } = config;
 
   useEffect(() => {
     getData(id);
@@ -37,40 +28,15 @@ function TeamCalendar({ getData, teamCalendarData, teamInfo }) {
             {teamInfo.area ? teamInfo.area.name : ''}
           </p>
         </div>
+
+        <SetDatePeriodForm />
+
         <Link className="team-calendar__link" to={TEAMS}>
           {BACK_TO_TEAMS_LIST_LINK_TEXT}
         </Link>
       </div>
 
-      <table className="team-calendar-table">
-        <thead className="table-head team-calendar-table__header">
-          <tr>
-            <th className="table-head__cell" colSpan="2">
-              <span className="table-head__date">{DATE}</span>
-            </th>
-            <th className="table-head__cell">
-              <span className="table-head__competition">{COMPETITION}</span>
-            </th>
-            <th className="table-head__cell">
-              <span className="table-head__opponent">{OPPONENT}</span>
-            </th>
-            <th className="table-head__cell">
-              <span className="table-head__score">{SCORE}</span>
-            </th>
-            <th className="table-head__cell">
-              <span className="table-head__winner">{WINNER}</span>
-            </th>
-            <th className="table-head__cell">
-              <span className="table-head__status">{STATUS}</span>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {teamCalendarData.map((match) => (
-            <TeamCalendarTable key={match.id} match={match} selectedTeamId={id} />
-          ))}
-        </tbody>
-      </table>
+      <TeamCalendarTable teamCalendarData={teamCalendarData} id={id} />
     </section>
   );
 }

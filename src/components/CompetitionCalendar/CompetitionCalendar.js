@@ -3,9 +3,9 @@ import { forCompetitionCalendar as config } from '../../configs/configForCompone
 import { useEffect, useRef, useCallback } from 'react';
 import { useParams, Link, useHistory } from 'react-router-dom';
 import pathToBallImage from '../../images/soccer-ball.svg';
-import CompetitionCalendarTableStroke from '../CompetitionCalendarTableStroke/CompetitionCalendarTableStroke';
-import { useFormWithValidation } from '../../hooks/useFormWithValidation';
+import CompetitionCalendarTable from '../CompetitionCalendarTable/CompetitionCalendarTable';
 import './CompetitionCalendar.css';
+import SetDatePeriodForm from '../SetDatePeriodForm/SetDatePeriodForm';
 
 function CompetitionCalendar({
   calendarData,
@@ -19,29 +19,14 @@ function CompetitionCalendar({
   const seasonSelectInput = useRef(null);
   const monthSelectInput = useRef(null);
 
-  const { values, resetForm, isFormValid, handleInputChange, errors } = useFormWithValidation();
-  const { dateFrom, dateTo } = values;
-
   const {
     TITLE,
     BACK_TO_COMPETITIONS_LIST_LINK_TEXT,
     MONTH,
     SEASON,
-    DATE,
-    HOMETEAM,
-    SCORE,
-    AWAYTEAM,
-    GROUP,
-    STATUS,
-    LABEL_DATE_FROM,
-    PLACEHOLDER_DATE_FROM,
-    LABEL_DATE_TO,
-    PLACEHOLDER_DATE_TO,
-    SUBMIT_BUTTON_TEXT,
     MONTHS_LIST,
     SEASON_OPTION_TEXT,
     MONTH_OPTION_TEXT,
-    FORM_TITLE_TEXT,
   } = config;
 
   const getData = useCallback(() => {
@@ -67,19 +52,9 @@ function CompetitionCalendar({
     );
   }, [history, id]);
 
-  const handleFormSubmit = useCallback(
-    (evt) => {
-      evt.preventDefault();
-      resetForm();
-      history.push(`/competitions/${id}/period/${dateFrom}/${dateTo}`);
-    },
-    [resetForm, history, dateFrom, dateTo, id],
-  );
-
   useEffect(() => {
-    resetForm();
     getData();
-  }, [resetForm, getData]);
+  }, [getData]);
 
   return (
     <section className="competition-calendar">
@@ -139,88 +114,23 @@ function CompetitionCalendar({
               ))}
             </select>
           </div>
-
-          <form onSubmit={handleFormSubmit} className="form competition-calendar_form">
-            <h2 className="form__title">{FORM_TITLE_TEXT}</h2>
-            <div className="form__field">
-              <label className="form__label">{LABEL_DATE_FROM}</label>
-              <input
-                type="text"
-                id="dateFrom"
-                name="dateFrom"
-                value={dateFrom || ''}
-                onChange={handleInputChange}
-                className="form__input"
-                placeholder={PLACEHOLDER_DATE_FROM}
-                required
-              ></input>
-              <span className="form__input-error" id="dateFrom-input-error">
-                {errors.dateFrom || ''}
-              </span>
-            </div>
-            <div className="form__field">
-              <label className="form__label">{LABEL_DATE_TO}</label>
-              <input
-                type="text"
-                id="dateTo"
-                name="dateTo"
-                value={dateTo || ''}
-                onChange={handleInputChange}
-                className="form__input"
-                placeholder={PLACEHOLDER_DATE_TO}
-                required
-              ></input>
-              <span className="form__input-error" id="dateTo-input-error">
-                {errors.dateTo || ''}
-              </span>
-            </div>
-            <button className="form__submit-button" type="submit" disabled={!isFormValid}>
-              {SUBMIT_BUTTON_TEXT}
-            </button>
-          </form>
         </div>
+
+        <SetDatePeriodForm />
+
         <Link className="competition-calendar__link" to={COMPETITIONS}>
           {BACK_TO_COMPETITIONS_LIST_LINK_TEXT}
         </Link>
       </div>
 
-      <table className="matchday-table competition-calendar__table">
-        <thead className="matchday-table-head matchday-table__header">
-          <tr>
-            <th className="matchday-table-head__cell" colSpan="2">
-              <span className="matchday-table-head__date">{DATE}</span>
-            </th>
-            <th className="matchday-table-head__cell">
-              <span className="matchday-table-head__hometeam">{HOMETEAM}</span>
-            </th>
-            <th className="matchday-table-head__cell">
-              <span className="matchday-table-head__score">{SCORE}</span>
-            </th>
-            <th className="matchday-table-head__cell">
-              <span className="matchday-table-head__awayteam">{AWAYTEAM}</span>
-            </th>
-            <th className="matchday-table-head__cell">
-              <span className="matchday-table-head__group">{GROUP}</span>
-            </th>
-            <th className="matchday-table-head__cell">
-              <span className="matchday-table-head__status">{STATUS}</span>
-            </th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {competitionInfo.currentSeason && calendarData[monthId] && seasonId && monthId
-            ? calendarData[monthId].map((match) => (
-                <CompetitionCalendarTableStroke key={match.id} match={match} />
-              ))
-            : null}
-          {competitionInfo.currentSeason && calendarData.matches && dateFromId && dateToId
-            ? calendarData.matches.map((match) => (
-                <CompetitionCalendarTableStroke key={match.id} match={match} />
-              ))
-            : null}
-        </tbody>
-      </table>
+      <CompetitionCalendarTable
+        competitionInfo={competitionInfo}
+        calendarData={calendarData}
+        seasonId={seasonId}
+        monthId={monthId}
+        dateFromId={dateFromId}
+        dateToId={dateToId}
+      />
     </section>
   );
 }

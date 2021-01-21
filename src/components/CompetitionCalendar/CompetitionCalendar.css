@@ -35,7 +35,7 @@
   justify-content: flex-start;
   padding: 10px 0;
   box-sizing: border-box;
-  width: 500px;
+  width: 350px;
 }
 
 .competition-calendar__competition-name {
@@ -58,6 +58,7 @@
 }
 
 .competition-calendar__link {
+  width: 90px;
   text-decoration: none;
   color: #b6bcbf;
   align-self: flex-start;
@@ -68,17 +69,6 @@
 .competition-calendar__link:hover {
   color: #fff;
   text-decoration: underline;
-}
-
-.matchday-table {
-  color: #fff;
-}
-
-.matchday-table-head__cell {
-  padding: 5px 0;
-  box-sizing: border-box;
-  border-bottom: 1px solid grey;
-  border-top: 1px solid grey;
 }
 
 .competition-calendar__season-select {
@@ -103,57 +93,4 @@
 
 .competition-calendar__month-select-input {
   width: 150px;
-}
-
-.form {
-  width: 300px;
-  color: #b6bcbf;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-}
-.competition-calendar_form {
-}
-
-.form__title {
-  font-size: 18px;
-  margin: 0;
-}
-
-.form__field {
-  margin: 0 0 20px;
-  width: 290px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
-}
-
-.form__label {
-  font-size: 16px;
-}
-
-.form__input {
-  width: 200px;
-}
-.form__input-error {
-  position: absolute;
-  left: 70px;
-  bottom: -22px;
-  font-family: 'Inter', Arial, Helvetica, sans-serif;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 15px;
-  height: 2em;
-  color: #ff0000;
-}
-
-.form__submit-button {
-  width: 150px;
-  margin: 0 auto;
 }

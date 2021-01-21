@@ -1,5 +1,5 @@
 import Card from '../Card/Card';
-import { useRef, useCallback } from 'react';
+import { useRef } from 'react';
 import { forCardsList as config } from '../../configs/configForComponents';
 import './CardsList.css';
 

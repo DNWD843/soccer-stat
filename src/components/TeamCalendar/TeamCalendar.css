@@ -32,7 +32,7 @@
   justify-content: flex-start;
   padding: 10px 0;
   box-sizing: border-box;
-  width: 500px;
+  width: 350px;
 }
 
 .team-calendar__team-name {
@@ -47,6 +47,7 @@
 }
 
 .team-calendar__link {
+  width: 90px;
   text-decoration: none;
   color: #b6bcbf;
   align-self: flex-start;
@@ -57,38 +58,4 @@
 .team-calendar__link:hover {
   color: #fff;
   text-decoration: underline;
-}
-
-.team-calendar-table {
-  color: #fff;
-}
-
-.table-head {
-}
-
-.team-calendar-table__header {
-}
-
-.table-head__cell {
-  padding: 5px 0;
-  box-sizing: border-box;
-  border-bottom: 1px solid grey;
-  border-top: 1px solid grey;
-}
-.table-head__date {
-}
-
-.table-head__competition {
-}
-
-.table-head__opponent {
-}
-
-.table-head__score {
-}
-
-.table-head__winner {
-}
-
-.table-head__status {
 }

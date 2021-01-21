@@ -38,8 +38,11 @@ export const forPageNotFound = {
 };
 
 export const forTeamCalendar = {
-  TITLE: 'Расписание игр',
+  TITLE: 'Календарь игр',
   BACK_TO_TEAMS_LIST_LINK_TEXT: 'Вернуться к списку команд',
+};
+
+export const forTeamCalendarTable = {
   DATE: 'Дата',
   COMPETITION: 'Турнир',
   OPPONENT: 'Соперник',
@@ -47,11 +50,6 @@ export const forTeamCalendar = {
   WINNER: 'Победитель',
   STATUS: 'Статус',
   YEAR: 'Год: ',
-  LABEL_DATE_FROM: 'Дата с',
-  PLACEHOLDER_DATE_FROM: 'в формате 16.01.2021',
-  LABEL_DATE_TO: 'Дата по',
-  PLACEHOLDER_DATE_TO: 'в формате 20.01.2021',
-  SUBMIT_BUTTON_TEXT: 'Показать',
 };
 
 export const forCompetitionCalendar = {
@@ -59,17 +57,6 @@ export const forCompetitionCalendar = {
   BACK_TO_COMPETITIONS_LIST_LINK_TEXT: 'Вернуться к списку турниров',
   SEASON: 'Сезон: ',
   MONTH: 'Месяц: ',
-  DATE: 'Дата',
-  HOMETEAM: 'Хозяева',
-  SCORE: 'Счет',
-  AWAYTEAM: 'Гости',
-  GROUP: 'Группа',
-  STATUS: 'Статус',
-  LABEL_DATE_FROM: 'Дата с',
-  PLACEHOLDER_DATE_FROM: 'в формате ГГГГ-ММ-ДД',
-  LABEL_DATE_TO: 'Дата по',
-  PLACEHOLDER_DATE_TO: 'в формате ГГГГ-ММ-ДД',
-  SUBMIT_BUTTON_TEXT: 'Показать',
   MONTHS_LIST: [
     'Январь',
     'Февраль',
@@ -86,7 +73,15 @@ export const forCompetitionCalendar = {
   ],
   SEASON_OPTION_TEXT: 'Выбрать сезон',
   MONTH_OPTION_TEXT: 'Месяц',
-  FORM_TITLE_TEXT: 'Выберите период:',
+};
+
+export const forCompetitionCalendarTable = {
+  DATE: 'Дата',
+  HOMETEAM: 'Хозяева',
+  SCORE: 'Счет',
+  AWAYTEAM: 'Гости',
+  GROUP: 'Группа',
+  STATUS: 'Статус',
 };
 
 export const forCardsList = {
@@ -95,4 +90,13 @@ export const forCardsList = {
 
 export const forPreloader = {
   TITLE: 'Идет загрузка...',
+};
+
+export const forSetDatePeriodForm = {
+  LABEL_DATE_FROM: 'Дата с',
+  PLACEHOLDER_DATE_FROM: 'в формате ГГГГ-ММ-ДД',
+  LABEL_DATE_TO: 'Дата по',
+  PLACEHOLDER_DATE_TO: 'в формате ГГГГ-ММ-ДД',
+  SUBMIT_BUTTON_TEXT: 'Показать',
+  FORM_TITLE_TEXT: 'Выберите период:',
 };
