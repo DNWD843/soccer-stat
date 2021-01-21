@@ -16,6 +16,7 @@ import {
   getTeamInfo,
   getCompetitionInfo,
   getCompetitionCalendarByPeriod,
+  getTeamCalendarByDatePeriod,
 } from '../../utils/Api';
 import * as to from '../../utils/routesMap';
 
@@ -74,7 +75,7 @@ function App() {
     (id) => {
       const selectedCompetition = competitionsList.find((competition) => competition.id === id);
       history.push(
-        `${history.location.pathname}/${id}/season/${selectedCompetition.currentSeason}/month/${selectedCompetition.currentSeasonMonth}`,
+        `${history.location.pathname}/${id}${to.SEASON}/${selectedCompetition.currentSeason}${to.MONTH}/${selectedCompetition.currentSeasonMonth}`,
       );
     },
     [history, competitionsList],
@@ -129,6 +130,17 @@ function App() {
       });
   }, []);
 
+  const getTeamDataByDatePeriod = useCallback((id, dateFromId, dateToId) => {
+    Promise.all([getTeamCalendarByDatePeriod(id, dateFromId, dateToId), getTeamInfo(id)])
+      .then(([data, info]) => {
+        setTeamCalendarData(data.matches);
+        setTeamInfo(info);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   useEffect(() => {
     getFullData();
   }, [getFullData]);
@@ -138,54 +150,76 @@ function App() {
       <Header />
 
       <main className="content">
-        {isLoading ? (
-          <Preloader />
-        ) : (
-          <Switch>
-            <Route path={to.MAIN} exact>
-              <Redirect to={to.COMPETITIONS} />
-            </Route>
-            <Route path={to.COMPETITIONS} exact>
+        <Switch>
+          <Route path={to.MAIN} exact>
+            <Redirect to={to.COMPETITIONS} />
+          </Route>
+          <Route path={to.COMPETITIONS} exact>
+            {isLoading ? (
+              <Preloader />
+            ) : (
               <CardsList
                 cardsList={competitionsList}
                 handleSelectOfCard={handleClickOnCompetitionCard}
               />
-            </Route>
-            <Route path={to.TEAMS} exact>
+            )}
+          </Route>
+          <Route path={to.TEAMS} exact>
+            {isLoading ? (
+              <Preloader />
+            ) : (
               <CardsList cardsList={teamsList} handleSelectOfCard={handleClickOnTeamCard} />
-            </Route>
-            {/* <Route path={`${to.COMPETITIONS}/:id`} exact>
-            <CompetitionCalendar
-              getCalendarData={getCompetitionCalendar}
-              getCompetitionInfo={getCompetitionInfo}
-            />
-          </Route>*/}
-            <Route path={`${to.TEAMS}/:id`} exact>
+            )}
+          </Route>
+          <Route path={`${to.TEAMS}/:id`} exact>
+            {isLoading ? (
+              <Preloader />
+            ) : (
               <TeamCalendar
                 getData={getTeamData}
                 teamCalendarData={teamCalendarData}
                 teamInfo={teamInfo}
               />
-            </Route>
-            <Route path={`${to.COMPETITIONS}/:id/season/:seasonId/month/:monthId`}>
+            )}
+          </Route>
+          <Route path={`${to.TEAMS}/:id${to.PERIOD}/:dateFromId/:dateToId`} exact>
+            {isLoading ? (
+              <Preloader />
+            ) : (
+              <TeamCalendar
+                getData={getTeamDataByDatePeriod}
+                teamCalendarData={teamCalendarData}
+                teamInfo={teamInfo}
+              />
+            )}
+          </Route>
+
+          <Route path={`${to.COMPETITIONS}/:id${to.SEASON}/:seasonId${to.MONTH}/:monthId`}>
+            {isLoading ? (
+              <Preloader />
+            ) : (
               <CompetitionCalendar
-                getDataBySeasonId={getCompetitionDataBySeasonId}
+                getData={getCompetitionDataBySeasonId}
                 calendarData={calendarData}
                 competitionInfo={competitionInfo}
               />
-            </Route>
-            <Route path={`${to.COMPETITIONS}/:id/period/:dateFromId/:dateToId`}>
+            )}
+          </Route>
+          <Route path={`${to.COMPETITIONS}/:id${to.PERIOD}/:dateFromId/:dateToId`}>
+            {isLoading ? (
+              <Preloader />
+            ) : (
               <CompetitionCalendar
-                getDataByDatePeriod={getCompetitionDataByDatePeriod}
+                getData={getCompetitionDataByDatePeriod}
                 calendarData={calendarData}
                 competitionInfo={competitionInfo}
               />
-            </Route>
-            <Route path={to.ANY_ROUTE}>
-              <PageNotFound />
-            </Route>
-          </Switch>
-        )}
+            )}
+          </Route>
+          <Route path={to.ANY_ROUTE}>
+            <PageNotFound />
+          </Route>
+        </Switch>
       </main>
 
       <Footer />

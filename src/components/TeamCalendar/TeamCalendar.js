@@ -5,13 +5,14 @@ import { forTeamCalendar as config } from '../../configs/configForComponents';
 import TeamCalendarTable from '../TeamCalendarTable/TeamCalendarTable';
 import SetDatePeriodForm from '../SetDatePeriodForm/SetDatePeriodForm';
 import './TeamCalendar.css';
+
 function TeamCalendar({ getData, teamCalendarData, teamInfo }) {
-  let { id } = useParams();
+  let { id, dateFromId, dateToId } = useParams();
   const { TITLE, BACK_TO_TEAMS_LIST_LINK_TEXT } = config;
 
   useEffect(() => {
-    getData(id);
-  }, [getData, id]);
+    dateFromId && dateToId ? getData(id, dateFromId, dateToId) : getData(id);
+  }, [getData, id, dateFromId, dateToId]);
 
   return (
     <section className="team-calendar">
@@ -27,6 +28,11 @@ function TeamCalendar({ getData, teamCalendarData, teamInfo }) {
           <p className="team-calendar__team-country-name">
             {teamInfo.area ? teamInfo.area.name : ''}
           </p>
+          {dateFromId ? (
+            <Link to={`${TEAMS}/${id}`} className="team-calendar__link">
+              {TITLE}
+            </Link>
+          ) : null}
         </div>
 
         <SetDatePeriodForm />

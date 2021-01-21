@@ -2,6 +2,7 @@ import { useCallback, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { forSetDatePeriodForm as config } from '../../configs/configForComponents';
 import { useFormWithValidation } from '../../hooks/useFormWithValidation';
+import { PERIOD } from '../../utils/routesMap';
 import './SetDatePeriodForm.css';
 
 function SetDatePeriodForm() {
@@ -25,7 +26,7 @@ function SetDatePeriodForm() {
         `${history.location.pathname
           .split('/')
           .slice(0, 3)
-          .join('/')}/period/${dateFrom}/${dateTo}`,
+          .join('/')}${PERIOD}/${dateFrom}/${dateTo}`,
       );
     },
     [resetForm, history, dateFrom, dateTo],
