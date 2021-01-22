@@ -262,25 +262,27 @@ function App() {
   const handleSubmitSearchFormOnCompetitionsList = useCallback(
     (obtainedCard) => {
       if (!obtainedCard) {
-        alert('oops');
+        setIsErrorTooltipOpened(true);
+        document.addEventListener('keydown', handleEscClose);
       } else {
         history.push(
           `${history.location.pathname}/${obtainedCard.id}${to.SEASON}/${obtainedCard.currentSeason}${to.MONTH}/${obtainedCard.currentSeasonMonth}`,
         );
       }
     },
-    [history],
+    [history, setIsErrorTooltipOpened, handleEscClose],
   );
 
   const handleSubmitSearchFormOnTeamsList = useCallback(
     (obtainedCard) => {
       if (!obtainedCard) {
-        alert('oops');
+        setIsErrorTooltipOpened(true);
+        document.addEventListener('keydown', handleEscClose);
       } else {
         history.push(`${history.location.pathname}/${obtainedCard.id}`);
       }
     },
-    [history],
+    [history, setIsErrorTooltipOpened, handleEscClose],
   );
 
   const handleChangeSeason = useCallback(
