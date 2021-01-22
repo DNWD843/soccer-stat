@@ -6,7 +6,7 @@ import TeamCalendarTable from '../TeamCalendarTable/TeamCalendarTable';
 import SetDatePeriodForm from '../SetDatePeriodForm/SetDatePeriodForm';
 import './TeamCalendar.css';
 
-function TeamCalendar({ getData, teamCalendarData, teamInfo }) {
+function TeamCalendar({ getData, teamCalendarData, teamInfo, handleSubmitSetDatePeriodForm }) {
   let { id, dateFromId, dateToId } = useParams();
   const { TITLE, BACK_TO_TEAMS_LIST_LINK_TEXT } = config;
 
@@ -35,7 +35,7 @@ function TeamCalendar({ getData, teamCalendarData, teamInfo }) {
           ) : null}
         </div>
 
-        <SetDatePeriodForm />
+        <SetDatePeriodForm handleSubmitSetDatePeriodForm={handleSubmitSetDatePeriodForm} />
 
         <Link className="team-calendar__link" to={TEAMS}>
           {BACK_TO_TEAMS_LIST_LINK_TEXT}

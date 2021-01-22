@@ -86,6 +86,8 @@ export const forCompetitionCalendarTable = {
 
 export const forCardsList = {
   SELECT_INPUT_DEFAULT_OPTION_TEXT: 'Выбрать из списка:',
+  INPUT_PLACEHOLDER_TEXT: 'Введите ключевое слово или его часть',
+  FORM_SUBMIT_BUTTON_TEXT: 'Найти',
 };
 
 export const forPreloader = {

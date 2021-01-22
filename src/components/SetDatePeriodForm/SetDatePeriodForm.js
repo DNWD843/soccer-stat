@@ -1,11 +1,10 @@
 import { useCallback, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
 import { forSetDatePeriodForm as config } from '../../configs/configForComponents';
 import { useFormWithValidation } from '../../hooks/useFormWithValidation';
 import { PERIOD } from '../../utils/routesMap';
 import './SetDatePeriodForm.css';
 
-function SetDatePeriodForm() {
+function SetDatePeriodForm({ handleSubmitSetDatePeriodForm }) {
   const {
     LABEL_DATE_FROM,
     PLACEHOLDER_DATE_FROM,
@@ -14,22 +13,18 @@ function SetDatePeriodForm() {
     SUBMIT_BUTTON_TEXT,
     FORM_TITLE_TEXT,
   } = config;
-  const history = useHistory();
+
   const { values, resetForm, isFormValid, handleInputChange, errors } = useFormWithValidation();
   const { dateFrom, dateTo } = values;
 
   const handleFormSubmit = useCallback(
     (evt) => {
       evt.preventDefault();
+
+      handleSubmitSetDatePeriodForm(dateFrom, dateTo);
       resetForm();
-      history.push(
-        `${history.location.pathname
-          .split('/')
-          .slice(0, 3)
-          .join('/')}${PERIOD}/${dateFrom}/${dateTo}`,
-      );
     },
-    [resetForm, history, dateFrom, dateTo],
+    [resetForm, handleSubmitSetDatePeriodForm, dateFrom, dateTo],
   );
 
   useEffect(() => {

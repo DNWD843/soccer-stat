@@ -141,6 +141,59 @@ function App() {
       });
   }, []);
 
+  const handleSubmitSearchFormOnCompetitionsList = useCallback(
+    (obtainedCard) => {
+      if (!obtainedCard) {
+        alert('oops');
+      } else {
+        history.push(
+          `${history.location.pathname}/${obtainedCard.id}${to.SEASON}/${obtainedCard.currentSeason}${to.MONTH}/${obtainedCard.currentSeasonMonth}`,
+        );
+      }
+    },
+    [history],
+  );
+
+  const handleSubmitSearchFormOnTeamsList = useCallback(
+    (obtainedCard) => {
+      if (!obtainedCard) {
+        alert('oops');
+      } else {
+        history.push(`${history.location.pathname}/${obtainedCard.id}`);
+      }
+    },
+    [history],
+  );
+
+  const handleChangeSeason = useCallback(
+    (selectedSeason, id) => {
+      history.push(
+        `${to.COMPETITIONS}/${id}${to.SEASON}/${selectedSeason.startDate.slice(0, 4)}${
+          to.MONTH
+        }/${new Date(selectedSeason.startDate).getMonth()}`,
+      );
+    },
+    [history],
+  );
+
+  const handleChangeMonth = useCallback(
+    ({ id, season, selectedMonth }) => {
+      history.push(`${to.COMPETITIONS}/${id}${to.SEASON}/${season}${to.MONTH}/${selectedMonth}`);
+    },
+    [history],
+  );
+
+  const handleSubmitSetDatePeriodForm = useCallback(
+    (dateFrom, dateTo) => {
+      history.push(
+        `${history.location.pathname.split('/').slice(0, 3).join('/')}${
+          to.PERIOD
+        }/${dateFrom}/${dateTo}`,
+      );
+    },
+    [history],
+  );
+
   useEffect(() => {
     getFullData();
   }, [getFullData]);
@@ -161,6 +214,7 @@ function App() {
               <CardsList
                 cardsList={competitionsList}
                 handleSelectOfCard={handleClickOnCompetitionCard}
+                handleSubmitSearchForm={handleSubmitSearchFormOnCompetitionsList}
               />
             )}
           </Route>
@@ -168,7 +222,11 @@ function App() {
             {isLoading ? (
               <Preloader />
             ) : (
-              <CardsList cardsList={teamsList} handleSelectOfCard={handleClickOnTeamCard} />
+              <CardsList
+                cardsList={teamsList}
+                handleSelectOfCard={handleClickOnTeamCard}
+                handleSubmitSearchForm={handleSubmitSearchFormOnTeamsList}
+              />
             )}
           </Route>
           <Route path={`${to.TEAMS}/:id`} exact>
@@ -190,6 +248,7 @@ function App() {
                 getData={getTeamDataByDatePeriod}
                 teamCalendarData={teamCalendarData}
                 teamInfo={teamInfo}
+                handleSubmitSetDatePeriodForm={handleSubmitSetDatePeriodForm}
               />
             )}
           </Route>
@@ -199,9 +258,12 @@ function App() {
               <Preloader />
             ) : (
               <CompetitionCalendar
-                getData={getCompetitionDataBySeasonId}
                 calendarData={calendarData}
                 competitionInfo={competitionInfo}
+                getData={getCompetitionDataBySeasonId}
+                handleChangeSeason={handleChangeSeason}
+                handleChangeMonth={handleChangeMonth}
+                handleSubmitSetDatePeriodForm={handleSubmitSetDatePeriodForm}
               />
             )}
           </Route>
@@ -213,6 +275,7 @@ function App() {
                 getData={getCompetitionDataByDatePeriod}
                 calendarData={calendarData}
                 competitionInfo={competitionInfo}
+                handleSubmitSetDatePeriodForm={handleSubmitSetDatePeriodForm}
               />
             )}
           </Route>

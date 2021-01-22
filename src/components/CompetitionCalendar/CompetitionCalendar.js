@@ -1,14 +1,20 @@
 import * as to from '../../utils/routesMap';
 import { forCompetitionCalendar as config } from '../../configs/configForComponents';
 import { useEffect, useRef, useCallback } from 'react';
-import { useParams, Link, useHistory } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import pathToBallImage from '../../images/soccer-ball.svg';
 import CompetitionCalendarTable from '../CompetitionCalendarTable/CompetitionCalendarTable';
 import SetDatePeriodForm from '../SetDatePeriodForm/SetDatePeriodForm';
 import './CompetitionCalendar.css';
 
-function CompetitionCalendar({ calendarData, competitionInfo, getData }) {
-  const history = useHistory();
+function CompetitionCalendar({
+  calendarData,
+  competitionInfo,
+  getData,
+  handleChangeSeason,
+  handleChangeMonth,
+  handleSubmitSetDatePeriodForm,
+}) {
   let { id, seasonId, monthId, dateFromId, dateToId } = useParams();
 
   const seasonSelectInput = useRef(null);
@@ -24,22 +30,20 @@ function CompetitionCalendar({ calendarData, competitionInfo, getData }) {
     MONTH_OPTION_TEXT,
   } = config;
 
-  const handleChangeSeason = useCallback(() => {
+  const handleChangeSeasonSelectInputOption = useCallback(() => {
     const selectedSeason = competitionInfo.seasons.find(
       (season) => season.startDate.slice(0, 4) === seasonSelectInput.current.value,
     );
-    history.push(
-      `${to.COMPETITIONS}/${id}${to.SEASON}/${selectedSeason.startDate.slice(0, 4)}${
-        to.MONTH
-      }/${new Date(selectedSeason.startDate).getMonth()}`,
-    );
-  }, [history, competitionInfo.seasons, id]);
+    handleChangeSeason(selectedSeason, id);
+  }, [competitionInfo.seasons, handleChangeSeason, id]);
 
-  const handleChangeMonth = useCallback(() => {
-    history.push(
-      `${to.COMPETITIONS}/${id}${to.SEASON}/${seasonSelectInput.current.value}${to.MONTH}/${monthSelectInput.current.value}`,
-    );
-  }, [history, id]);
+  const handleChangeMonthSelectInputOption = useCallback(() => {
+    handleChangeMonth({
+      id,
+      season: seasonSelectInput.current.value,
+      selectedMonth: monthSelectInput.current.value,
+    });
+  }, [id, handleChangeMonth]);
 
   useEffect(() => {
     seasonId && monthId ? getData(id, seasonId) : getData(id, dateFromId, dateToId);
@@ -65,7 +69,7 @@ function CompetitionCalendar({ calendarData, competitionInfo, getData }) {
             <span className="competition-calendar__season">{SEASON}</span>
 
             <select
-              onChange={handleChangeSeason}
+              onChange={handleChangeSeasonSelectInputOption}
               ref={seasonSelectInput}
               name="season"
               value={seasonId}
@@ -87,7 +91,7 @@ function CompetitionCalendar({ calendarData, competitionInfo, getData }) {
             <span className="competition-calendar__month">{MONTH}</span>
 
             <select
-              onChange={handleChangeMonth}
+              onChange={handleChangeMonthSelectInputOption}
               ref={monthSelectInput}
               name="month"
               value={monthId}
@@ -106,7 +110,7 @@ function CompetitionCalendar({ calendarData, competitionInfo, getData }) {
           </div>
         </div>
 
-        <SetDatePeriodForm />
+        <SetDatePeriodForm handleSubmitSetDatePeriodForm={handleSubmitSetDatePeriodForm} />
 
         <Link className="competition-calendar__link" to={to.COMPETITIONS}>
           {BACK_TO_COMPETITIONS_LIST_LINK_TEXT}
