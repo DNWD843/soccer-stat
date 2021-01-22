@@ -102,3 +102,14 @@ export const forSetDatePeriodForm = {
   SUBMIT_BUTTON_TEXT: 'Показать',
   FORM_TITLE_TEXT: 'Выберите период:',
 };
+
+export const forInfoTooltip = {
+  ERROR_TITLE: 'Что-то пошло не так!',
+  ERROR_SUBTITLE: 'Измените параметры запроса и попробуйте еще раз.',
+  SERVER_ERROR_TITLE: 'Сервер не отвечает!',
+  SERVER_ERROR_SUBTITLE: 'Попробуйте позже.',
+  EMPTY_DATA_TITLE: 'В указанный период матчей не найдено!',
+  EMPTY_DATA_SUBTITLE: 'Измените параметры запроса и попробуйте еще раз.',
+  NO_MATCHES_PLANED_TITLE: 'Матчи не запланированы.',
+  NO_MATCHES_PLANED_SUBTITLE: '',
+};

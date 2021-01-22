@@ -30,9 +30,6 @@
   display: flex;
 }
 
-.content__search-form {
-}
-
 .search-form__form-field {
   margin: 0 10px 0 0;
   /*width: 100%;

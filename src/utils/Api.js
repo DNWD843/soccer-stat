@@ -27,7 +27,7 @@ export const getCompetitionsData = () => {
     if (res.ok) {
       return res.json();
     }
-    return Promise.reject(`Статус ответа: ${res.status}`);
+    return Promise.reject(`Статус ответа: ${res.status} ${res.statusText}`);
   });
 };
 
@@ -41,7 +41,7 @@ export const getTeamsData = () => {
     if (res.ok) {
       return res.json();
     }
-    return Promise.reject(`Статус ответа: ${res.status}`);
+    return Promise.reject(`Статус ответа: ${res.status} ${res.statusText}`);
   });
 };
 
@@ -55,10 +55,10 @@ export const getCompetitionCalendarBySeason = (competitionId, seasonStartDate) =
       },
     },
   ).then((res) => {
-    if (res.ok) {
+    if (!res.status.toString().startsWith('5') || !(res.status === 429)) {
       return res.json();
     }
-    return Promise.reject(`Статус ответа: ${res.status}`);
+    return Promise.reject(`Статус ответа: ${res.status} ${res.statusText}`);
   });
 };
 
@@ -72,7 +72,7 @@ export const getTeamCalendar = (teamId) => {
     if (res.ok) {
       return res.json();
     }
-    return Promise.reject(`Статус ответа: ${res.status}`);
+    return Promise.reject(`Статус ответа: ${res.status} ${res.statusText}`);
   });
 };
 
@@ -86,10 +86,10 @@ export const getTeamCalendarByDatePeriod = (teamId, dateFrom, dateTo) => {
       },
     },
   ).then((res) => {
-    if (res.ok) {
+    if (!res.status.toString().startsWith('5') || !(res.status === 429)) {
       return res.json();
     }
-    return Promise.reject(`Статус ответа: ${res.status}`);
+    return Promise.reject(`Статус ответа: ${res.status} ${res.statusText}`);
   });
 };
 
@@ -103,7 +103,7 @@ export const getTeamInfo = (teamId) => {
     if (res.ok) {
       return res.json();
     }
-    return Promise.reject(`Статус ответа: ${res.errorCode}${res.message}`);
+    return Promise.reject(`Статус ответа: ${res.status} ${res.statusText}`);
   });
 };
 
@@ -114,10 +114,10 @@ export const getCompetitionInfo = (competitionId) => {
       'X-Auth-Token': `${API_KEY}`,
     },
   }).then((res) => {
-    if (res.ok) {
+    if (!res.status.toString().startsWith('5') || !(res.status === 429)) {
       return res.json();
     }
-    return Promise.reject(`Статус ответа: ${res.errorCode}${res.message}`);
+    return Promise.reject(`Статус ответа: ${res.status} ${res.statusText}`);
   });
 };
 
@@ -131,9 +131,9 @@ export const getCompetitionCalendarByPeriod = (competitionId, dateFrom, dateTo) 
       },
     },
   ).then((res) => {
-    if (res.ok) {
+    if (!res.status.toString().startsWith('5') || !(res.status === 429)) {
       return res.json();
     }
-    return Promise.reject(`Статус ответа: ${res.status}`);
+    return Promise.reject(`Статус ответа: ${res.status} ${res.statusText}`);
   });
 };
