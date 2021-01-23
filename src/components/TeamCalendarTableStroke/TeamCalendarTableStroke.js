@@ -7,30 +7,30 @@ function TeamCalendarTableStroke({ match, selectedTeamId }) {
   return (
     <>
       <tr className="team-calendar-table__stroke">
-        <td className="team-calendar-table__cell">
+        <td className="team-calendar-table__cell team-calendar-table__cell_size_100">
           <span className="stroke__date">{date}</span>
         </td>
-        <td className="team-calendar-table__cell">
+        <td className="team-calendar-table__cell team-calendar-table__cell_size_60">
           <span className="stroke__time">{time}</span>
         </td>
-        <td className="team-calendar-table__cell">
+        <td className="team-calendar-table__cell team-calendar-table__cell_size_220">
           <span className="stroke__competition">
             {`${match.competition.name}. ${match.competition.area.name}`}
           </span>
         </td>
-        <td className="team-calendar-table__cell">
+        <td className="team-calendar-table__cell team-calendar-table__cell_size_220">
           <span className="stroke__opponent">
             {match.homeTeam.id === +selectedTeamId ? match.awayTeam.name : match.homeTeam.name}
           </span>
         </td>
-        <td className="team-calendar-table__cell">
+        <td className="team-calendar-table__cell team-calendar-table__cell_size_50">
           <span className="stroke__score">
             {`${
               match.score.fullTime.homeTeam !== null ? match.score.fullTime.homeTeam : ' -- '
             } : ${match.score.fullTime.awayTeam !== null ? match.score.fullTime.awayTeam : ' -- '}`}
           </span>
         </td>
-        <td className="team-calendar-table__cell">
+        <td className="team-calendar-table__cell team-calendar-table__cell_size_220">
           <span className="stroke__winner">
             {!match.score.winner
               ? ''
@@ -41,7 +41,7 @@ function TeamCalendarTableStroke({ match, selectedTeamId }) {
               : match.awayTeam.name}
           </span>
         </td>
-        <td className="team-calendar-table__cell">
+        <td className="team-calendar-table__cell team-calendar-table__cell_size_135">
           <span className="stroke__status">{match.status}</span>
         </td>
       </tr>

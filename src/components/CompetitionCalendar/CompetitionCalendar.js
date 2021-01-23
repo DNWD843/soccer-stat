@@ -5,6 +5,7 @@ import { useParams, Link } from 'react-router-dom';
 import pathToBallImage from '../../images/soccer-ball.svg';
 import CompetitionCalendarTable from '../CompetitionCalendarTable/CompetitionCalendarTable';
 import SetDatePeriodForm from '../SetDatePeriodForm/SetDatePeriodForm';
+import classNames from 'classnames';
 import './CompetitionCalendar.css';
 
 function CompetitionCalendar({
@@ -29,6 +30,11 @@ function CompetitionCalendar({
     SEASON_OPTION_TEXT,
     MONTH_OPTION_TEXT,
   } = config;
+
+  const competitionCalendarImageClassName = classNames(
+    'competition-calendar__image',
+    !competitionInfo.emblemUrl && 'competition-calendar__image_hidden-on-mobile',
+  );
 
   const handleChangeSeasonSelectInputOption = useCallback(() => {
     const selectedSeason = competitionInfo.seasons.find(
@@ -57,7 +63,7 @@ function CompetitionCalendar({
         <img
           src={competitionInfo.emblemUrl || pathToBallImage}
           alt="логотип футбольного турнира"
-          className="competition-calendar__image"
+          className={competitionCalendarImageClassName}
         />
         <div className="competition-calendar__description">
           <h3 className="competition-calendar__competition-name">{competitionInfo.name || ''}</h3>

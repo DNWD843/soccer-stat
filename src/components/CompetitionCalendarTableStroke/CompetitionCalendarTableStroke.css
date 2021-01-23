@@ -28,3 +28,96 @@
 .matchday-table__cell_size_220 {
   width: 220px;
 }
+
+@media screen and (max-width: 1000px) and (min-width: 900px) {
+  .matchday-table__cell_size_135 {
+    width: 100px;
+  }
+
+  .matchday-table__cell_size_220 {
+    width: 180px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .matchday-table__cell_size_50 {
+    width: 45px;
+  }
+
+  .matchday-table__cell_size_60 {
+    width: 48px;
+  }
+
+  .matchday-table__cell_size_90 {
+    width: 60px;
+  }
+
+  .matchday-table__cell_size_100 {
+    width: 80px;
+  }
+
+  .matchday-table__cell_size_135 {
+    width: 80px;
+  }
+
+  .matchday-table__cell_size_220 {
+    width: 140px;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .matchday-table__cell {
+    padding: 2px;
+    margin: 5px;
+  }
+
+  .matchday-table__cell_size_50 {
+    width: 40px;
+  }
+
+  .matchday-table__cell_size_60 {
+    width: 40px;
+  }
+
+  .matchday-table__cell_size_90 {
+    width: 45px;
+  }
+
+  .matchday-table__cell_size_100 {
+    width: 50px;
+  }
+
+  .matchday-table__cell_size_135 {
+    width: 60px;
+  }
+
+  .matchday-table__cell_size_220 {
+    width: 90px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .matchday-table__cell_size_50 {
+    width: 35px;
+  }
+
+  .matchday-table__cell_size_60 {
+    width: 20px;
+  }
+
+  .matchday-table__cell_size_90 {
+    width: 30px;
+  }
+
+  .matchday-table__cell_size_100 {
+    width: 40px;
+  }
+
+  .matchday-table__cell_size_135 {
+    width: 40px;
+  }
+
+  .matchday-table__cell_size_220 {
+    width: 50px;
+  }
+}

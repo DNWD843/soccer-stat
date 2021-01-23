@@ -13,26 +13,26 @@ function CompetitionCalendarTable({
   const { DATE, HOMETEAM, SCORE, AWAYTEAM, GROUP, STATUS } = config;
 
   return (
-    <table className="matchday-table competition-calendar__table">
-      <thead className="matchday-table-head matchday-table__header">
+    <table className="competition-table competition-calendar__table">
+      <thead className="competition-table-head competition-table__header">
         <tr>
-          <th className="matchday-table-head__cell" colSpan="2">
-            <span className="matchday-table-head__date">{DATE}</span>
+          <th className="competition-table-head__cell" colSpan="2">
+            <span className="competition-table-head__date">{DATE}</span>
           </th>
-          <th className="matchday-table-head__cell">
-            <span className="matchday-table-head__hometeam">{HOMETEAM}</span>
+          <th className="competition-table-head__cell">
+            <span className="competition-table-head__hometeam">{HOMETEAM}</span>
           </th>
-          <th className="matchday-table-head__cell">
-            <span className="matchday-table-head__score">{SCORE}</span>
+          <th className="competition-table-head__cell">
+            <span className="competition-table-head__score">{SCORE}</span>
           </th>
-          <th className="matchday-table-head__cell">
-            <span className="matchday-table-head__awayteam">{AWAYTEAM}</span>
+          <th className="competition-table-head__cell">
+            <span className="competition-table-head__awayteam">{AWAYTEAM}</span>
           </th>
-          <th className="matchday-table-head__cell">
-            <span className="matchday-table-head__group">{GROUP}</span>
+          <th className="competition-table-head__cell">
+            <span className="competition-table-head__group">{GROUP}</span>
           </th>
-          <th className="matchday-table-head__cell">
-            <span className="matchday-table-head__status">{STATUS}</span>
+          <th className="competition-table-head__cell">
+            <span className="competition-table-head__status">{STATUS}</span>
           </th>
         </tr>
       </thead>

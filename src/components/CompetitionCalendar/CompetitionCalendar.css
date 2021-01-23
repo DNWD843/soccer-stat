@@ -15,7 +15,7 @@
   display: flex;
   align-self: flex-start;
   width: 100%;
-  padding: 40px 0 40px 40px;
+  padding: 40px;
   box-sizing: border-box;
 }
 
@@ -93,4 +93,70 @@
 
 .competition-calendar__month-select-input {
   width: 150px;
+}
+
+@media screen and (max-width: 900px) {
+  .competition-calendar__info {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .competition-calendar__image {
+    margin-right: 0;
+    margin-bottom: 10px;
+    margin-top: 0;
+  }
+
+  .competition-calendar__description {
+    align-items: center;
+    width: 300px;
+  }
+
+  .competition-calendar__competition-name {
+    font-size: 18px;
+  }
+
+  .competition-calendar__competition-country-name {
+    font-size: 14px;
+  }
+
+  .competition-calendar__season-select {
+    font-size: 14px;
+  }
+
+  .competition-calendar__month-select {
+    font-size: 14px;
+  }
+
+  .competition-calendar__link {
+    width: 150px;
+    text-align: center;
+    align-self: center;
+    font-size: 14px;
+  }
+
+  .competition-calendar__competition-country-name {
+    margin: 0 0 20px;
+  }
+
+  .competition-calendar__image_hidden-on-mobile {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .competition-calendar__title {
+    font-size: 18px;
+  }
+  .competition-calendar__season-select {
+    font-size: 12px;
+  }
+
+  .competition-calendar__month-select {
+    font-size: 12px;
+  }
+  .competition-calendar__link {
+    font-size: 10px;
+  }
 }

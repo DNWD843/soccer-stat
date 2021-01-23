@@ -1,10 +1,39 @@
-.matchday-table {
+.competition-table {
   color: #fff;
 }
 
-.matchday-table-head__cell {
+.competition-table-head__cell {
   padding: 5px 0;
   box-sizing: border-box;
   border-bottom: 1px solid grey;
   border-top: 1px solid grey;
+}
+
+@media screen and (max-width: 1000px) {
+  .competition-table {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .competition-table {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .competition-table {
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .competition-table {
+    font-size: 8px;
+  }
+
+  .competition-table-head__cell {
+    padding: 1px;
+    font-size: 7px;
+  }
 }
