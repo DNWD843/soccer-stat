@@ -37,6 +37,7 @@ function App() {
   const [isServerErrorTooltipOpened, setIsServerErrorTooltipOpened] = useState(false);
   const [isEmptyDataTooltipOpened, setIsEmptyDataTooltipOpened] = useState(false);
   const [hasNoMatchesTooltipOpened, setHasNoMatchesTooltipOpened] = useState(false);
+  const [isMobileMenuOpened, setIsMobileMenuOpened] = useState(false);
 
   /**
    * @method
@@ -52,6 +53,7 @@ function App() {
     setIsServerErrorTooltipOpened(false);
     setIsEmptyDataTooltipOpened(false);
     setHasNoMatchesTooltipOpened(false);
+    setIsMobileMenuOpened(false);
   }, []);
 
   /**
@@ -314,13 +316,26 @@ function App() {
     [history],
   );
 
+  const handleClickOnMenuButton = useCallback(() => {
+    if (isMobileMenuOpened) {
+      closeAllPopups(handleEscClose);
+    } else {
+      document.addEventListener('keydown', handleEscClose);
+      setIsMobileMenuOpened(true);
+    }
+  }, [closeAllPopups, handleEscClose, isMobileMenuOpened]);
+
   useEffect(() => {
     getFullData();
   }, [getFullData]);
 
   return (
     <>
-      <Header />
+      <Header
+        onMenuButtonClick={handleClickOnMenuButton}
+        isMobileMenuOpened={isMobileMenuOpened}
+        onOverlayClick={handleClickOnOverlay}
+      />
 
       <main className="content">
         <Switch>
