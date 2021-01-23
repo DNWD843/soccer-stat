@@ -1,5 +1,12 @@
 import './CompetitionCalendarTableStroke.css';
 
+/**
+ * @module CompetitionCalendarTableStroke
+ * @description Строка таблицы с данными о матче
+ * @param {Object} match - объект с данными о матче
+ * @returns {JSX}
+ * @since v.1.0.0
+ */
 function CompetitionCalendarTableStroke({ match }) {
   const date = new Date(match.utcDate).toLocaleString().slice(0, 10);
   const time = new Date(match.utcDate).toLocaleTimeString().slice(0, 5);

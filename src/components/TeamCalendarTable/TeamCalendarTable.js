@@ -2,6 +2,14 @@ import { forTeamCalendarTable as config } from '../../configs/configForComponent
 import TeamCalendarTableStroke from '../TeamCalendarTableStroke/TeamCalendarTableStroke';
 import './TeamCalendarTable.css';
 
+/**
+ * @module TeamCalendarTable
+ * @description Таблица календаря матчей команды
+ * @param {Object} teamCalendarData - данные матчей команды для календаря
+ * @param {Number} id - id команды
+ * @returns {JSX}
+ * @since v.1.0.0
+ */
 function TeamCalendarTable({ teamCalendarData, id }) {
   const { DATE, COMPETITION, OPPONENT, SCORE, WINNER, STATUS } = config;
   return (

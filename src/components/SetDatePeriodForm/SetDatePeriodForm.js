@@ -3,6 +3,13 @@ import { forSetDatePeriodForm as config } from '../../configs/configForComponent
 import { useFormWithValidation } from '../../hooks/useFormWithValidation';
 import './SetDatePeriodForm.css';
 
+/**
+ * @module SetDatePeriodForm
+ * @description Форма поиска матчей по диапазону дат.
+ * @param {Function} handleSubmitSetDatePeriodForm - колбэк, обработчик сабмита формы задания диапазона дат
+ * @returns {JSX}
+ * @since v.1.0.0
+ */
 function SetDatePeriodForm({ handleSubmitSetDatePeriodForm }) {
   const {
     LABEL_DATE_FROM,
@@ -16,6 +23,13 @@ function SetDatePeriodForm({ handleSubmitSetDatePeriodForm }) {
   const { values, resetForm, isFormValid, handleInputChange, errors } = useFormWithValidation();
   const { dateFrom, dateTo } = values;
 
+  /**
+   * @method handleFormSubmit
+   * @description Обработчик сабмита формы задания диапазона дат.
+   * @param {Event} evt - событие
+   * @public
+   * @since v.1.0.0
+   */
   const handleFormSubmit = useCallback(
     (evt) => {
       evt.preventDefault();

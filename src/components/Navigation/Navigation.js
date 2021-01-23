@@ -7,8 +7,7 @@ import './Navigation.css';
 
 /**
  * @module Navigation
- * @description Функциональный компонент<br>
- * Блок навигации по сайту.<br>
+ * @description Блок навигации по сайту.
  * @property {Boolean} isMobile -стейт состояния меню - мобильное (на мобильном разрешении)
  * @returns {JSX}
  * @since v.1.0.0

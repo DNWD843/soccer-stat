@@ -6,6 +6,16 @@ import TeamCalendarTable from '../TeamCalendarTable/TeamCalendarTable';
 import SetDatePeriodForm from '../SetDatePeriodForm/SetDatePeriodForm';
 import './TeamCalendar.css';
 
+/**
+ * @module TeamCalendar
+ * @description
+ * @param {Function} getData -
+ * @param {Object} teamCalendarData -
+ * @param {Object} teamInfo -
+ * @param {Function} handleSubmitSetDatePeriodForm -
+ * @returns {JSX}
+ * @since v.1.0.0
+ */
 function TeamCalendar({ getData, teamCalendarData, teamInfo, handleSubmitSetDatePeriodForm }) {
   let { id, dateFromId, dateToId } = useParams();
   const { TITLE, BACK_TO_TEAMS_LIST_LINK_TEXT } = config;

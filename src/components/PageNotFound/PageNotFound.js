@@ -5,10 +5,9 @@ import './PageNotFound.css';
 
 /**
  * @module PageNotFound
- * @description Функциональный компонент<br>
- * Блок с сообщением, что пользователь пытался перейти на несуществующую страницу.
+ * @description Страница с сообщением, что пользователь пытался перейти на несуществующую страницу.
  * @returns {JSX}
- * @since v.1.1.0
+ * @since v.1.0.0
  */
 function PageNotFound() {
   const { TITLE, DESCRIPTION, ERROR_STATUS, LINK_TEXT } = config;

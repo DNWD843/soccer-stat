@@ -8,6 +8,18 @@ import SetDatePeriodForm from '../SetDatePeriodForm/SetDatePeriodForm';
 import classNames from 'classnames';
 import './CompetitionCalendar.css';
 
+/**
+ * @module CompetitionCalendar
+ * @description Страница календаря игр турнира.
+ * @param {Object} calendarData - объект с данными об играх турнира
+ * @param {Object} competitionInfo -  объект с информацией о турнире
+ * @param {Function} getData - колбэк, метод запроса данных о турнире и об играх турнира
+ * @param {Function} handleChangeSeason - колбэк, обработчик выбора сезона в меню выпадающего списка
+ * @param {Function} handleChangeMonth - колбэк, обработчик выбора месяца в меню выпадающего списка
+ * @param {Function} handleSubmitSetDatePeriodForm - колбэк, обработчик сабмита формы задания диапазона дат
+ * @returns {JSX}
+ * @since v.1.0.0
+ */
 function CompetitionCalendar({
   calendarData,
   competitionInfo,
@@ -36,6 +48,12 @@ function CompetitionCalendar({
     !competitionInfo.emblemUrl && 'competition-calendar__image_hidden-on-mobile',
   );
 
+  /**
+   * @method handleChangeSeasonSelectInputOption
+   * @description Обработчик выбора сезона в меню выпадающего списка.
+   * @public
+   * @since v.1.0.0
+   */
   const handleChangeSeasonSelectInputOption = useCallback(() => {
     const selectedSeason = competitionInfo.seasons.find(
       (season) => season.startDate.slice(0, 4) === seasonSelectInput.current.value,
@@ -43,6 +61,12 @@ function CompetitionCalendar({
     handleChangeSeason(selectedSeason, id);
   }, [competitionInfo.seasons, handleChangeSeason, id]);
 
+  /**
+   * @method handleChangeMonthSelectInputOption
+   * @description Обработчик выбора месяца в меню выпадающего списка.
+   * @public
+   * @since v.1.0.0
+   */
   const handleChangeMonthSelectInputOption = useCallback(() => {
     handleChangeMonth({
       id,

@@ -2,7 +2,25 @@ import pathToDefaultImage from '../../images/soccer-ball.svg';
 import { useCallback } from 'react';
 import './Card.css';
 
+/**
+ * @module Card
+ * @description Карточка с информацией о турнире или команде
+ * @param {Object} card - объект с данными турнира или команды
+ * @property {Number} card.id - id турнира или команды
+ * @property {String} card.title - название турнира или команды
+ * @property {String} card.country - страна турнира или команды
+ * @property {String} card.image - URL изображения: для турнира - флаг страны, для команды - эмблема команды
+ * @param {Function} handleSelectOfCard - колбэк, обработчик выбора карточки
+ * @returns {JSX}
+ * @since v.1.0.0
+ */
 function Card({ id, title, country, image, handleSelectOfCard }) {
+  /**
+   * @method handleClick
+   * @description Обработчик клика по карточке.
+   * @public
+   * @since v.1.0.0
+   */
   const handleClick = useCallback(() => {
     handleSelectOfCard(id);
   }, [handleSelectOfCard, id]);

@@ -4,6 +4,15 @@ import { forCardsList as config } from '../../configs/configForComponents';
 import { useFormWithValidation } from '../../hooks/useFormWithValidation';
 import './CardsList.css';
 
+/**
+ * @module CardsList
+ * @description Список карточек с информацией о турнирах или командах
+ * @param {Array} cardsList - массив данных о турнирах или командах для отображения карточек
+ * @param {Function} handleSelectOfCard - колбэк, обработчик клика по карточке
+ * @param {Function} handleSubmitSearchForm - колбэк, обработчик сабмита формы поиска по названию
+ * @returns {JSX}
+ * @since v.1.0.0
+ */
 function CardsList({ cardsList, handleSelectOfCard, handleSubmitSearchForm }) {
   const {
     SELECT_INPUT_DEFAULT_OPTION_TEXT,
@@ -15,10 +24,23 @@ function CardsList({ cardsList, handleSelectOfCard, handleSubmitSearchForm }) {
   const { values, handleInputChange, resetForm } = useFormWithValidation();
   const { query } = values;
 
-  const handleChangeOptionOnSelectInput = () => {
+  /**
+   * @method handleChangeOptionOnSelectInput
+   * @description Обработчик выбора пункта меню из выпадающего списка.
+   * @public
+   * @since v.1.0.0
+   */
+  const handleChangeOptionOnSelectInput = useCallback(() => {
     handleSelectOfCard(+selectInput.current.value);
-  };
+  }, [handleSelectOfCard]);
 
+  /**
+   * @method handleSubmit
+   * @description Обработчик сабмита формы поиска по названию.
+   * @param {Event} evt - событие
+   * @public
+   * @since v.1.0.0
+   */
   const handleSubmit = useCallback(
     (evt) => {
       evt.preventDefault();

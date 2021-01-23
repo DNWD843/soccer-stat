@@ -1,5 +1,13 @@
 import './TeamCalendarTableStroke.css';
 
+/**
+ * @module TeamCalendarTableStroke
+ * @description Строка таблицы календаря матчей команды
+ * @param {Object} match - объект с данными матча команды
+ * @param {Number} selectedTeamId - id команды
+ * @returns {JSX}
+ * @since v.1.0.0
+ */
 function TeamCalendarTableStroke({ match, selectedTeamId }) {
   const date = new Date(match.utcDate).toLocaleString().slice(0, 10);
   const time = new Date(match.utcDate).toLocaleTimeString().slice(0, 5);

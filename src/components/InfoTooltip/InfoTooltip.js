@@ -9,6 +9,8 @@ import './InfoTooltip.css';
  * @property {Function} onOverlayClick - колбэк, закрывает подсказку при клике по оверлею
  * @property {Boolean} isOpened - стейт открытого состояния подсказки
  * @property {Function} onClose - колбэк, закрывает попапы при клике по крестику
+ * @property {String} errorTitle - заголовок подсказки
+ * @property {String} errorSubtitle - текст подсказки
  * @returns {JSX}
  * @since v.1.0.0
  */
@@ -32,6 +34,8 @@ InfoTooltip.propTypes = {
   onOverlayClick: PropTypes.func.isRequired,
   isOpened: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
+  errorTitle: PropTypes.string.isRequired,
+  errorSubtitle: PropTypes.string,
 };
 
 export default InfoTooltip;

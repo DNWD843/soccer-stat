@@ -2,6 +2,18 @@ import CompetitionCalendarTableStroke from '../CompetitionCalendarTableStroke/Co
 import { forCompetitionCalendarTable as config } from '../../configs/configForComponents';
 import './CompetitionCalendarTable.css';
 
+/**
+ * @module CompetitionCalendarTable
+ * @description Таблица календаря матчей турнира
+ * @param {Object} competitionInfo - объект с информацией о турнире
+ * @param {Object} calendarData - объект с данными о матчах
+ * @param {String} seasonId - идентификатор сезона - год начала сезона
+ * @param {String} monthId - идентификатор месяца сезона
+ * @param {String} dateFromId - начальная дата диапазона дат
+ * @param {String} dateToId - конечная дата диапазона дат
+ * @returns {JSX}
+ * @since v.1.0.0
+ */
 function CompetitionCalendarTable({
   competitionInfo,
   calendarData,

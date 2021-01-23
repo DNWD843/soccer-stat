@@ -23,6 +23,14 @@ import * as to from '../../utils/routesMap';
 import './App.css';
 import EmptyDataTooltip from '../EmptyDataTooltip/EmptyDataTooltip';
 
+/**
+ * @module App
+ * @description Функциональный компонент<br>
+ * Главный компонент приложения<br>
+ * Управляет всеми компонентами приложения<br>
+ * @returns {JSX}
+ * @since v.1.0.0
+ */
 function App() {
   const history = useHistory();
 
@@ -43,7 +51,8 @@ function App() {
    * @method
    * @name closeAllPopups
    * @description Публичный метод<br>
-   * Стрелочная функция, закрывает все попапы, удаляет слушатель нажатия клавиши Esc
+   * Закрывает все попапы, удаляет слушатель нажатия клавиши Esc
+   * @param {function} callback - колбэк, слушатель которого будет удален при вызове closeAllPopups
    * @public
    * @since v.1.0.0
    */
@@ -59,7 +68,7 @@ function App() {
   /**
    * @method handleEscClose
    * @description Обработчик нажатия на клавишу Escape<br>
-   * Стрелочная функция, закрывает попап при нажатии клавиши Esc
+   * Закрывает попап при нажатии клавиши Esc
    * @param {Event} evt - событие
    * @public
    * @since v.1.0.0
@@ -76,19 +85,13 @@ function App() {
   /**
    * @method handleClickOnOverlay
    * @description Обработчик клика по оверлею<br>
-   * Стрелочная функция, закрывает попап при клике по оверлею
+   * Закрывает попап при клике по оверлею
    * @param {Event} evt - событие
    * @public
    * @since v.1.0.0
    */
   const handleClickOnOverlay = useCallback(
     (evt) => {
-      /**
-       * Проверка истинности условия - клик по оверлею <br>
-       * Примечание: этот метод используется как обработчик в слушателе клика на оверлее попапа<br>
-       * Поэтому в данном случае условие проверяет совпадение клика именно на оверлее попапа
-       * @ignore
-       */
       if (evt.target === evt.currentTarget) {
         closeAllPopups(handleEscClose);
       }
@@ -138,6 +141,14 @@ function App() {
       });
   }, [handleEscClose]);
 
+  /**
+   * @method handleClickOnCompetitionCard
+   * @description Обработчик нажатия на карточку турнира<br>
+   * При нажатии на карточку турнира происходит переадресация на страницу турнира.
+   * @param {Number} id - id турнира
+   * @since v.1.0.0
+   * @public
+   */
   const handleClickOnCompetitionCard = useCallback(
     (id) => {
       const selectedCompetition = competitionsList.find((competition) => competition.id === id);
@@ -148,6 +159,14 @@ function App() {
     [history, competitionsList],
   );
 
+  /**
+   * @method handleClickOnTeamCard
+   * @description Обработчик нажатия на карточку команды<br>
+   * При нажатии на карточку команды происходит переадресация на страницу команды.
+   * @param {Number} id - id команды
+   * @since v.1.0.0
+   * @public
+   */
   const handleClickOnTeamCard = useCallback(
     (id) => {
       history.push(`${history.location.pathname}/${id}`);
@@ -155,6 +174,16 @@ function App() {
     [history],
   );
 
+  /**
+   * @method getCompetitionCalendarBySeasonId
+   * @description Метод получения данных о турнире по его id и году начала сезона.<br>
+   * Возвращает и сохраняет в стейты объект с данными турнира и объект с информацией о турнире.
+   * @param {Number} id - id турнира
+   * @param {String} seasonId - год начала сезона турнира
+   * @returns {Object}
+   * @since v.1.0.0
+   * @public
+   */
   const getCompetitionDataBySeasonId = useCallback(
     (id, seasonId) => {
       Promise.all([getCompetitionCalendarBySeason(id, seasonId), getCompetitionInfo(id)])
@@ -186,6 +215,17 @@ function App() {
     [handleEscClose],
   );
 
+  /**
+   * @method getCompetitionDataByDatePeriod
+   * @description Метод получения данных о турнире по его id и диапазону дат.<br>
+   * Возвращает и сохраняет в стейты объект с данными турнира и объект с информацией о турнире.
+   * @param {Number} id - id турнира
+   * @param {String} dateFromId - начальная дата диапазона
+   * @param {String} dateToId - конечная дата диапазона
+   * @returns {Object}
+   * @since v.1.0.0
+   * @public
+   */
   const getCompetitionDataByDatePeriod = useCallback(
     (id, dateFromId, dateToId) => {
       Promise.all([
@@ -214,6 +254,15 @@ function App() {
     [handleEscClose],
   );
 
+  /**
+   * @method getTeamData
+   * @description Метод получения данных команды по ее id.<br>
+   * Возвращает и сохраняет в стейты объект с данными о матчах команды и объект с информацией о команде.
+   * @param {Number} id - id команды
+   * @returns {Object}
+   * @since v.1.0.0
+   * @public
+   */
   const getTeamData = useCallback(
     (id) => {
       Promise.all([getTeamCalendar(id), getTeamInfo(id)])
@@ -236,6 +285,15 @@ function App() {
     [handleEscClose],
   );
 
+  /**
+   * @method getTeamDataByDatePeriod
+   * @description Метод получения данных команды по ее id и диапазону дат.<br>
+   * Возвращает и сохраняет в стейты объект с данными о матчах команды и объект с информацией о команде.
+   * @param {Number} id - id команды
+   * @returns {Object}
+   * @since v.1.0.0
+   * @public
+   */
   const getTeamDataByDatePeriod = useCallback(
     (id, dateFromId, dateToId) => {
       Promise.all([getTeamCalendarByDatePeriod(id, dateFromId, dateToId), getTeamInfo(id)])
@@ -261,6 +319,14 @@ function App() {
     [handleEscClose],
   );
 
+  /**
+   * @method handleSubmitSearchFormOnCompetitionsList
+   * @description Обработчик сабмита формы поиска турнира по названию турнира<br>
+   * Находит турнир по запросу и переадресовывает на его страницу.
+   * @param {Object} obtainedCard - объект с данными турнира, найденного по запросу
+   * @public
+   * @since v.1.0.0
+   */
   const handleSubmitSearchFormOnCompetitionsList = useCallback(
     (obtainedCard) => {
       if (!obtainedCard) {
@@ -275,6 +341,14 @@ function App() {
     [history, setIsErrorTooltipOpened, handleEscClose],
   );
 
+  /**
+   * @method handleSubmitSearchFormOnTeamsList
+   * @description Обработчик сабмита формы поиска команды по названию<br>
+   * Находит команду по запросу и переадресовывает на ее страницу.
+   * @param {Object} obtainedCard - объект с данными команды, найденной по запросу
+   * @public
+   * @since v.1.0.0
+   */
   const handleSubmitSearchFormOnTeamsList = useCallback(
     (obtainedCard) => {
       if (!obtainedCard) {
@@ -287,6 +361,15 @@ function App() {
     [history, setIsErrorTooltipOpened, handleEscClose],
   );
 
+  /**
+   * @method handleChangeSeason
+   * @description Обработчик изменения сезона в выпадающем списке сезонов<br>
+   * Переадресовывает на страницу турнира с данными выбранного сезона
+   * @param {Number} selectedSeason - года начала выбранного сезона
+   * @param {Number} id -id турнира
+   * @public
+   * @since v.1.0.0
+   */
   const handleChangeSeason = useCallback(
     (selectedSeason, id) => {
       history.push(
@@ -298,6 +381,16 @@ function App() {
     [history],
   );
 
+  /**
+   * @method handleChangeMonth
+   * @description Обработчик изменения месяца в выпадающем списке месяцев<br>
+   * Переадресовывает на страницу турнира с матчами в выбранном месяце
+   * @param {Number} id -id турнира
+   * @param {String} season - года начала сезона
+   * @param {Number} selectedMonth - выбранный месяц
+   * @public
+   * @since v.1.0.0
+   */
   const handleChangeMonth = useCallback(
     ({ id, season, selectedMonth }) => {
       history.push(`${to.COMPETITIONS}/${id}${to.SEASON}/${season}${to.MONTH}/${selectedMonth}`);
@@ -305,6 +398,15 @@ function App() {
     [history],
   );
 
+  /**
+   * @method handleSubmitSetDatePeriodForm
+   * @description Обработчик сабмита формы выбора диапазона дат для поиска данных<br>
+   * Переадресовывает на страницу команды или турнира с данными за указанный период
+   * @param {String} dateFrom - начальная дата диапазона
+   * @param {String} dateTo - конечная дата диапазона
+   * @public
+   * @since v.1.0.0
+   */
   const handleSubmitSetDatePeriodForm = useCallback(
     (dateFrom, dateTo) => {
       history.push(
@@ -316,6 +418,13 @@ function App() {
     [history],
   );
 
+  /**
+   * @method  handleClickOnMenuButton
+   * @description Обработчик клика по кнопке "Мобильное меню"<br>
+   * Открывает/закрывает мобильное меню при клике по кнопке меню на мобильном разрешении
+   * @public
+   * @since v.1.0.0
+   */
   const handleClickOnMenuButton = useCallback(() => {
     if (isMobileMenuOpened) {
       closeAllPopups(handleEscClose);
@@ -408,9 +517,10 @@ function App() {
               <Preloader />
             ) : (
               <CompetitionCalendar
-                getData={getCompetitionDataByDatePeriod}
                 calendarData={calendarData}
                 competitionInfo={competitionInfo}
+                getData={getCompetitionDataByDatePeriod}
+                handleChangeSeason={handleChangeSeason}
                 handleSubmitSetDatePeriodForm={handleSubmitSetDatePeriodForm}
               />
             )}
@@ -424,13 +534,8 @@ function App() {
       <Footer />
 
       <ErrorTooltip
-        isOpened={isErrorTooltipOpened}
-        onOverlayClick={handleClickOnOverlay}
-        onClose={closeAllPopups}
-      />
-
-      <ServerErrorTooltip
-        isOpened={isServerErrorTooltipOpened}
+        isErrorTooltipOpened={isErrorTooltipOpened}
+        isServerErrorTooltipOpened={isServerErrorTooltipOpened}
         onOverlayClick={handleClickOnOverlay}
         onClose={closeAllPopups}
       />

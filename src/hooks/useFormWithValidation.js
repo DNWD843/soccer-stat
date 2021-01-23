@@ -15,7 +15,7 @@ import { useCallback, useState } from 'react';
  *  происходит заполнение поля<br>
  * Возвращает объект со стейтами и методами.
  * @returns {Object}  { values, errors, isValid, handleInputChange, setValues, resetForm }
- * @since v.2.0.6
+ * @since v.1.0.0
  * @public
  */
 export function useFormWithValidation() {
@@ -51,7 +51,7 @@ export function useFormWithValidation() {
    * отправлены, форма приводится в изначальное актуальное состояние установкой стейтов в необходимые состояния.
    *  Состояния стейтов передаются аргументами коллбэку метода resetForm.
    * @public
-   * @since v.2.0.6
+   * @since v.1.0.0
    */
   const resetForm = useCallback(
     (
