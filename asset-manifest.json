@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/soccer-stat/static/css/main.1bd50e76.chunk.css",
+    "main.css": "/soccer-stat/static/css/main.df30b681.chunk.css",
     "main.js": "/soccer-stat/static/js/main.362d9b25.chunk.js",
     "main.js.map": "/soccer-stat/static/js/main.362d9b25.chunk.js.map",
     "runtime-main.js": "/soccer-stat/static/js/runtime-main.bd11930c.js",
@@ -8,7 +8,7 @@
     "static/js/2.3dd3547c.chunk.js": "/soccer-stat/static/js/2.3dd3547c.chunk.js",
     "static/js/2.3dd3547c.chunk.js.map": "/soccer-stat/static/js/2.3dd3547c.chunk.js.map",
     "index.html": "/soccer-stat/index.html",
-    "static/css/main.1bd50e76.chunk.css.map": "/soccer-stat/static/css/main.1bd50e76.chunk.css.map",
+    "static/css/main.df30b681.chunk.css.map": "/soccer-stat/static/css/main.df30b681.chunk.css.map",
     "static/js/2.3dd3547c.chunk.js.LICENSE.txt": "/soccer-stat/static/js/2.3dd3547c.chunk.js.LICENSE.txt",
     "static/media/Footer.css": "/soccer-stat/static/media/github.2e9e6d20.svg",
     "static/media/index.css": "/soccer-stat/static/media/sourcesanspro-regular.95f3ed41.woff",
@@ -19,7 +19,7 @@
   "entrypoints": [
     "static/js/runtime-main.bd11930c.js",
     "static/js/2.3dd3547c.chunk.js",
-    "static/css/main.1bd50e76.chunk.css",
+    "static/css/main.df30b681.chunk.css",
     "static/js/main.362d9b25.chunk.js"
   ]
 }
