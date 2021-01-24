@@ -1,21 +1,25 @@
 # soccer-stat
 
-Frontend проекта SoccerStat
+Frontend проекта SoccerStat.
 
 version: 1.0.0  
 author: Dmitry Neklyudov
+
+**Описание**
+
+Просмотр календаря матчей по турнирам и отдельным командам.  
+Выборка матчей производится по сезонам, месяцам или диапазону дат.
+Верстка - флексбокс, адаптивная.
 
 **Используемые технологии**
 
 - HTML5;
 - CSS3;
-- Flexbox;
 - Javascript;
 - ReactJS;
 
 **Используемые команды**  
 `npm start` - запуск приложения,  
-`npm run build` - продакшен сборка приложения,  
 `npm run jsdoc:build` - сборка документации в папку documentation
 
 **Описание версий**  

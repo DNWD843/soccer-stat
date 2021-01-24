@@ -34,7 +34,9 @@ function SetDatePeriodForm({ handleSubmitSetDatePeriodForm }) {
   const handleFormSubmit = useCallback(
     (evt) => {
       evt.preventDefault();
-      handleSubmitSetDatePeriodForm(dateFrom, dateTo);
+      const formattedDateFrom = dateFrom.split('.').reverse().join('-');
+      const formattedDateTo = dateTo.split('.').reverse().join('-');
+      handleSubmitSetDatePeriodForm(formattedDateFrom, formattedDateTo);
       resetForm();
     },
     [resetForm, handleSubmitSetDatePeriodForm, dateFrom, dateTo],

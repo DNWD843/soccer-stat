@@ -96,9 +96,9 @@ export const forPreloader = {
 
 export const forSetDatePeriodForm = {
   LABEL_DATE_FROM: 'Дата с',
-  PLACEHOLDER_DATE_FROM: 'в формате ГГГГ-ММ-ДД',
+  PLACEHOLDER_DATE_FROM: 'в формате ДД.ММ.ГГГГ',
   LABEL_DATE_TO: 'Дата по',
-  PLACEHOLDER_DATE_TO: 'в формате ГГГГ-ММ-ДД',
+  PLACEHOLDER_DATE_TO: 'в формате ДД.ММ.ГГГГ',
   SUBMIT_BUTTON_TEXT: 'Показать',
   FORM_TITLE_TEXT: 'Выберите период:',
 };
