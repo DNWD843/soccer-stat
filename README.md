@@ -1,6 +1,6 @@
 # soccer-stat
 
-Frontend проекта SOCCER-STAT
+Frontend проекта SoccerStat
 
 version: 1.0.0  
 author: Dmitry Neklyudov
