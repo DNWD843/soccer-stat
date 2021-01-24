@@ -1,0 +1,159 @@
+.cards {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.content__cards {
+}
+
+.content__elements {
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.cards-list__info {
+  display: flex;
+  justify-content: center;
+  margin: 0 0 40px;
+}
+
+.cards-list__content-select {
+  margin: 0 30px 0 0;
+  width: 250px;
+  height: 40px;
+  font-size: 18px;
+}
+
+.search-form {
+  display: flex;
+}
+
+.search-form__form-field {
+  margin: 0 10px 0 0;
+  /*width: 100%;
+  max-width: 400px;
+  min-width: 150px;*/
+}
+
+.search-form__input {
+  width: 400px;
+  height: 40px;
+  margin: 0;
+  box-sizing: border-box;
+  outline: none;
+  border-style: none;
+  border-radius: 5px;
+  box-sizing: border-box;
+  padding: 5px;
+}
+
+.search-form__input:focus {
+  box-shadow: 0 0 5px 5px rgba(150, 150, 150, 1);
+}
+
+.search-form__input::placeholder {
+  font-size: 16px;
+}
+
+.search-form__submit {
+  cursor: pointer;
+  padding: 5px 10px;
+  box-sizing: border-box;
+  margin: 0;
+  background-color: #b6bcbf;
+  border-style: none;
+  border-radius: 5px;
+}
+
+.search-form__submit:hover {
+  opacity: 0.7;
+  box-shadow: 0 0 5px 5px rgba(150, 150, 150, 1);
+}
+.search-form__submit:checked {
+  opacity: 0.2;
+}
+.search-form__submit:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.search-form__submit:disabled:hover {
+  box-shadow: none;
+}
+
+@media screen and (max-width: 1130px) {
+  .content__elements {
+    max-width: 860px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .content__elements {
+    max-width: 640px;
+  }
+
+  .search-form__input {
+    width: 300px;
+    height: 40px;
+  }
+
+  .search-form__input::placeholder {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .content__elements {
+    max-width: 420px;
+  }
+
+  .cards-list__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0 40px;
+  }
+
+  .cards-list__content-select {
+    margin: 0 0 30px 0;
+    width: 250px;
+    height: 40px;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .content__elements {
+    max-width: 210px;
+  }
+
+  .cards-list__content-select {
+    margin: 0 0 30px 0;
+    width: 250px;
+    height: 20px;
+    font-size: 10px;
+  }
+
+  .search-form__input {
+    width: 200px;
+    height: 25px;
+    font-size: 12px;
+  }
+
+  .search-form__input::placeholder {
+    font-size: 10px;
+  }
+  .search-form__submit {
+    cursor: pointer;
+    padding: 2px 6px;
+    font-size: 10px;
+    box-sizing: border-box;
+  }
+}

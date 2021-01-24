@@ -1,0 +1,106 @@
+.team-calendar-table__cell {
+  padding: 5px 10px;
+  box-sizing: border-box;
+  border-bottom: 1px solid grey;
+  margin: 5px;
+}
+
+.stroke__date {
+  display: inline-block;
+  text-align: center;
+}
+
+@media screen and (max-width: 1000px) and (min-width: 900px) {
+  .team-calendar-table__cell_size_135 {
+    width: 100px;
+  }
+
+  .team-calendar-table__cell_size_220 {
+    width: 180px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .team-calendar-table__cell_size_50 {
+    width: 45px;
+  }
+
+  .team-calendar-table__cell_size_60 {
+    width: 48px;
+  }
+
+  .team-calendar-table__cell_size_90 {
+    width: 60px;
+  }
+
+  .team-calendar-table__cell_size_100 {
+    width: 80px;
+  }
+
+  .team-calendar-table__cell_size_135 {
+    width: 80px;
+  }
+
+  .team-calendar-table__cell_size_220 {
+    width: 130px;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .team-calendar-table__cell {
+    padding: 2px;
+  }
+
+  .team-calendar-table__cell_size_50 {
+    width: 40px;
+  }
+
+  .team-calendar-table__cell_size_60 {
+    width: 40px;
+  }
+
+  .team-calendar-table__cell_size_90 {
+    width: 45px;
+  }
+
+  .team-calendar-table__cell_size_100 {
+    width: 50px;
+  }
+
+  .team-calendar-table__cell_size_135 {
+    width: 60px;
+  }
+
+  .team-calendar-table__cell_size_220 {
+    width: 80px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .team-calendar-table__cell {
+    padding: 1px;
+  }
+  .team-calendar-table__cell_size_50 {
+    width: 35px;
+  }
+
+  .team-calendar-table__cell_size_60 {
+    width: 20px;
+  }
+
+  .team-calendar-table__cell_size_90 {
+    width: 30px;
+  }
+
+  .team-calendar-table__cell_size_100 {
+    width: 40px;
+  }
+
+  .team-calendar-table__cell_size_135 {
+    width: 40px;
+  }
+
+  .team-calendar-table__cell_size_220 {
+    width: 50px;
+  }
+}
