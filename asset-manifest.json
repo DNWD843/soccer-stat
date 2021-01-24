@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/*/static/css/main.6dff3b51.chunk.css",
-    "main.js": "/*/static/js/main.5b027d4b.chunk.js",
-    "main.js.map": "/*/static/js/main.5b027d4b.chunk.js.map",
-    "runtime-main.js": "/*/static/js/runtime-main.7dcae9ad.js",
-    "runtime-main.js.map": "/*/static/js/runtime-main.7dcae9ad.js.map",
-    "static/js/2.3dd3547c.chunk.js": "/*/static/js/2.3dd3547c.chunk.js",
-    "static/js/2.3dd3547c.chunk.js.map": "/*/static/js/2.3dd3547c.chunk.js.map",
-    "index.html": "/*/index.html",
-    "static/css/main.6dff3b51.chunk.css.map": "/*/static/css/main.6dff3b51.chunk.css.map",
-    "static/js/2.3dd3547c.chunk.js.LICENSE.txt": "/*/static/js/2.3dd3547c.chunk.js.LICENSE.txt",
-    "static/media/Footer.css": "/*/static/media/github.2e9e6d20.svg",
-    "static/media/index.css": "/*/static/media/sourcesanspro-regular.95f3ed41.woff",
-    "static/media/Header.css": "/*/static/media/menu-close-button-mobile.90a8751d.svg",
-    "static/media/InfoTooltip.css": "/*/static/media/popup-close-icon.bc061867.svg",
-    "static/media/Preloader.css": "/*/static/media/soccer-ball.37a730ea.svg"
+    "main.css": "/soccer-stat/static/css/main.1bd50e76.chunk.css",
+    "main.js": "/soccer-stat/static/js/main.5b027d4b.chunk.js",
+    "main.js.map": "/soccer-stat/static/js/main.5b027d4b.chunk.js.map",
+    "runtime-main.js": "/soccer-stat/static/js/runtime-main.bd11930c.js",
+    "runtime-main.js.map": "/soccer-stat/static/js/runtime-main.bd11930c.js.map",
+    "static/js/2.3dd3547c.chunk.js": "/soccer-stat/static/js/2.3dd3547c.chunk.js",
+    "static/js/2.3dd3547c.chunk.js.map": "/soccer-stat/static/js/2.3dd3547c.chunk.js.map",
+    "index.html": "/soccer-stat/index.html",
+    "static/css/main.1bd50e76.chunk.css.map": "/soccer-stat/static/css/main.1bd50e76.chunk.css.map",
+    "static/js/2.3dd3547c.chunk.js.LICENSE.txt": "/soccer-stat/static/js/2.3dd3547c.chunk.js.LICENSE.txt",
+    "static/media/Footer.css": "/soccer-stat/static/media/github.2e9e6d20.svg",
+    "static/media/index.css": "/soccer-stat/static/media/sourcesanspro-regular.95f3ed41.woff",
+    "static/media/Header.css": "/soccer-stat/static/media/menu-close-button-mobile.90a8751d.svg",
+    "static/media/InfoTooltip.css": "/soccer-stat/static/media/popup-close-icon.bc061867.svg",
+    "static/media/Preloader.css": "/soccer-stat/static/media/soccer-ball.37a730ea.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.7dcae9ad.js",
+    "static/js/runtime-main.bd11930c.js",
     "static/js/2.3dd3547c.chunk.js",
-    "static/css/main.6dff3b51.chunk.css",
+    "static/css/main.1bd50e76.chunk.css",
     "static/js/main.5b027d4b.chunk.js"
   ]
 }
