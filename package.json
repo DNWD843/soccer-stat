@@ -20,7 +20,7 @@
     "deploy": "gh-pages -d build",
     "jsdoc:build": "jsdoc ./src/ ./src/components/App ./src/components/Card ./src/components/CardsList ./src/components/CompetitionCalendar ./src/components/CompetitionCalendarTable ./src/components/CompetitionCalendarTableStroke ./src/components/EmptyDataTooltip ./src/components/ErrorTooltip ./src/components/Footer ./src/components/Header ./src/components/InfoTooltip  ./src/components/Menu ./src/components/Navigation ./src/components/PageNotFound ./src/components/Preloader ./src/components/SetDatePeriodForm ./src/components/TeamCalendar ./src/components/TeamCalendarTable ./src/components/TeamCalendarTableStroke ./src/hooks/ ./src/utils/ ./README.md -d ./documentation"
   },
-  "homepage": "https://DNWD843.github.io/",
+  "homepage": "https://DNWD843.github.io/soccer-stat",
   "eslintConfig": {
     "extends": [
       "react-app",
