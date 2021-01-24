@@ -19,7 +19,7 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "jsdoc:build": "jsdoc ./src/ ./src/components/About ./src/components/App ./src/components/Footer ./src/components/Header ./src/components/InfoTooltip ./src/components/Login ./src/components/Main ./src/components/Menu ./src/components/Navigation ./src/components/NewsCard ./src/components/NewsCardList ./src/components/NoResult ./src/components/PageNotFound ./src/components/PopupWithForm ./src/components/Preloader ./src/components/ProtectedRoute ./src/components/Register ./src/components/SavedNews ./src/components/SavedNewsHeader ./src/components/SavedNewsInfo ./src/components/SearchForm ./src/components/SearchResult  ./src/hooks/ ./src/utils/ ./README.md -d ./documentation"
+    "jsdoc:build": "jsdoc ./src/ ./src/components/App ./src/components/Card ./src/components/CardsList ./src/components/CompetitionCalendar ./src/components/CompetitionCalendarTable ./src/components/CompetitionCalendarTableStroke ./src/components/EmptyDataTooltip ./src/components/ErrorTooltip ./src/components/Footer ./src/components/Header ./src/components/InfoTooltip  ./src/components/Menu ./src/components/Navigation ./src/components/PageNotFound ./src/components/Preloader ./src/components/SetDatePeriodForm ./src/components/TeamCalendar ./src/components/TeamCalendarTable ./src/components/TeamCalendarTableStroke ./src/hooks/ ./src/utils/ ./README.md -d ./documentation"
   },
   "homepage": "https://DNWD843.github.io/",
   "eslintConfig": {

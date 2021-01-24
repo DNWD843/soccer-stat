@@ -14,16 +14,14 @@ author: Dmitry Neklyudov
 - ReactJS;
 
 **Используемые команды**  
-`npm start` - запуск приложения в режиме разработки,  
+`npm start` - запуск приложения,  
 `npm run build` - продакшен сборка приложения,  
 `npm run jsdoc:build` - сборка документации в папку documentation
 
 **Описание версий**  
-**_Версия 1.1.0_**  
-Написан функционал приложения, отправка и обработка запросов.
-
 **_Версия 1.0.0_**  
-Верстка: созданы компоненты приложения, написаны стили.
+Верстка, функционал.
 
-**Посмотреть проект**  
-Посмотреть проект фронтенд + бэкенд, размещенные на облачном сервере, можно <a href="https://truthseeker.students.nomoreparties.xyz" target="_blank" rel="noreferrer noopener">ТУТ</a>
+**Посмотреть проект**
+
+Посмотреть проект на gh-pages можно по этой <a href="https://DNWD843.github.io/soccer-stat" target="_blank" rel="noreferrer noopener" >ССЫЛКЕ</a>

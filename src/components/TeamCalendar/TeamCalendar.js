@@ -9,11 +9,11 @@ import './TeamCalendar.css';
 
 /**
  * @module TeamCalendar
- * @description
- * @param {Function} getData -
- * @param {Array} teamCalendarData -
- * @param {Object} teamInfo -
- * @param {Function} handleSubmitSetDatePeriodForm -
+ * @description Календарь матчей выбранной команды
+ * @param {Function} getData - колбэк, получает данные о команде и о матчах
+ * @param {Array} teamCalendarData - массив матчей команды
+ * @param {Object} teamInfo - информация о команде
+ * @param {Function} handleSubmitSetDatePeriodForm - колбэк, обработчик сабмита формы задания диапазона дат
  * @returns {JSX}
  * @since v.1.0.0
  */
