@@ -24,4 +24,4 @@ author: Dmitry Neklyudov
 
 **Посмотреть проект**
 
-Посмотреть проект на gh-pages можно по этой <a href="https://DNWD843.github.io/soccer-stat" target="_blank" rel="noreferrer noopener" >ССЫЛКЕ</a>
+Посмотреть проект на gh-pages можно по этой <a href="https://DNWD843.github.io/soccer-stat/" target="_blank" rel="noreferrer noopener" >ССЫЛКЕ</a>
