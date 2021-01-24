@@ -3,7 +3,7 @@
  * @ignore
  */
 
-export const MAIN = '/';
+export const MAIN = '/soccer-stat';
 
 export const COMPETITIONS = '/competitions';
 

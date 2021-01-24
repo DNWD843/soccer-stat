@@ -447,7 +447,7 @@ function App() {
 
       <main className="content">
         <Switch>
-          <Route path={to.MAIN} exact>
+          <Route path={to.MAIN}>
             <Redirect to={to.COMPETITIONS} />
           </Route>
           <Route path={to.COMPETITIONS} exact>
