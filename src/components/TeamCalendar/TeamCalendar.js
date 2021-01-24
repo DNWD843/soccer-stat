@@ -4,13 +4,14 @@ import { TEAMS } from '../../utils/routesMap';
 import { forTeamCalendar as config } from '../../configs/configForComponents';
 import TeamCalendarTable from '../TeamCalendarTable/TeamCalendarTable';
 import SetDatePeriodForm from '../SetDatePeriodForm/SetDatePeriodForm';
+import PropTypes from 'prop-types';
 import './TeamCalendar.css';
 
 /**
  * @module TeamCalendar
  * @description
  * @param {Function} getData -
- * @param {Object} teamCalendarData -
+ * @param {Array} teamCalendarData -
  * @param {Object} teamInfo -
  * @param {Function} handleSubmitSetDatePeriodForm -
  * @returns {JSX}
@@ -56,5 +57,12 @@ function TeamCalendar({ getData, teamCalendarData, teamInfo, handleSubmitSetDate
     </section>
   );
 }
+
+TeamCalendar.propTypes = {
+  getData: PropTypes.func.isRequired,
+  teamCalendarData: PropTypes.array.isRequired,
+  teamInfo: PropTypes.object.isRequired,
+  handleSubmitSetDatePeriodForm: PropTypes.func.isRequired,
+};
 
 export default TeamCalendar;

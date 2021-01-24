@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import './TeamCalendarTableStroke.css';
 
 /**
@@ -56,5 +57,10 @@ function TeamCalendarTableStroke({ match, selectedTeamId }) {
     </>
   );
 }
+
+TeamCalendarTableStroke.propTypes = {
+  match: PropTypes.object.isRequired,
+  selectedTeamId: PropTypes.string.isRequired,
+};
 
 export default TeamCalendarTableStroke;

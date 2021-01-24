@@ -1,12 +1,13 @@
 import { forTeamCalendarTable as config } from '../../configs/configForComponents';
 import TeamCalendarTableStroke from '../TeamCalendarTableStroke/TeamCalendarTableStroke';
+import PropTypes from 'prop-types';
 import './TeamCalendarTable.css';
 
 /**
  * @module TeamCalendarTable
  * @description Таблица календаря матчей команды
- * @param {Object} teamCalendarData - данные матчей команды для календаря
- * @param {Number} id - id команды
+ * @param {Array} teamCalendarData - данные матчей команды для календаря
+ * @param {String} id - id команды
  * @returns {JSX}
  * @since v.1.0.0
  */
@@ -44,5 +45,10 @@ function TeamCalendarTable({ teamCalendarData, id }) {
     </table>
   );
 }
+
+TeamCalendarTable.propTypes = {
+  teamCalendarData: PropTypes.array.isRequired,
+  id: PropTypes.string.isRequired,
+};
 
 export default TeamCalendarTable;

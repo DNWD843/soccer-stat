@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import './CompetitionCalendarTableStroke.css';
 
 /**
@@ -42,5 +43,9 @@ function CompetitionCalendarTableStroke({ match }) {
     </>
   );
 }
+
+CompetitionCalendarTableStroke.propTypes = {
+  match: PropTypes.object.isRequired,
+};
 
 export default CompetitionCalendarTableStroke;

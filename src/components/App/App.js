@@ -8,7 +8,6 @@ import CompetitionCalendar from '../CompetitionCalendar/CompetitionCalendar';
 import PageNotFound from '../PageNotFound/PageNotFound';
 import Preloader from '../Preloader/Preloader';
 import ErrorTooltip from '../ErrorTooltip/ErrorTooltip';
-import ServerErrorTooltip from '../ServerErrorTooltip/ServerErrorTooltip';
 import {
   getCompetitionsData,
   getTeamsData,
@@ -521,6 +520,7 @@ function App() {
                 competitionInfo={competitionInfo}
                 getData={getCompetitionDataByDatePeriod}
                 handleChangeSeason={handleChangeSeason}
+                handleChangeMonth={handleChangeMonth}
                 handleSubmitSetDatePeriodForm={handleSubmitSetDatePeriodForm}
               />
             )}

@@ -1,6 +1,7 @@
 import { useCallback, useEffect } from 'react';
 import { forSetDatePeriodForm as config } from '../../configs/configForComponents';
 import { useFormWithValidation } from '../../hooks/useFormWithValidation';
+import PropTypes from 'prop-types';
 import './SetDatePeriodForm.css';
 
 /**
@@ -84,5 +85,9 @@ function SetDatePeriodForm({ handleSubmitSetDatePeriodForm }) {
     </form>
   );
 }
+
+SetDatePeriodForm.propTypes = {
+  handleSubmitSetDatePeriodForm: PropTypes.func.isRequired,
+};
 
 export default SetDatePeriodForm;

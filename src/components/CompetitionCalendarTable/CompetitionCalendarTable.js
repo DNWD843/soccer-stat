@@ -1,5 +1,6 @@
 import CompetitionCalendarTableStroke from '../CompetitionCalendarTableStroke/CompetitionCalendarTableStroke';
 import { forCompetitionCalendarTable as config } from '../../configs/configForComponents';
+import PropTypes from 'prop-types';
 import './CompetitionCalendarTable.css';
 
 /**
@@ -64,4 +65,14 @@ function CompetitionCalendarTable({
     </table>
   );
 }
+
+CompetitionCalendarTable.propTypes = {
+  competitionInfo: PropTypes.object.isRequired,
+  calendarData: PropTypes.object.isRequired,
+  seasonId: PropTypes.string,
+  monthId: PropTypes.string,
+  dateFromId: PropTypes.string,
+  dateToId: PropTypes.string,
+};
+
 export default CompetitionCalendarTable;

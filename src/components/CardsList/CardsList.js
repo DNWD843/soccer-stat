@@ -2,6 +2,7 @@ import Card from '../Card/Card';
 import { useCallback, useEffect, useRef } from 'react';
 import { forCardsList as config } from '../../configs/configForComponents';
 import { useFormWithValidation } from '../../hooks/useFormWithValidation';
+import PropTypes from 'prop-types';
 import './CardsList.css';
 
 /**
@@ -106,4 +107,10 @@ function CardsList({ cardsList, handleSelectOfCard, handleSubmitSearchForm }) {
     </section>
   );
 }
+
+CardsList.propTypes = {
+  cardsList: PropTypes.array.isRequired,
+  handleSelectOfCard: PropTypes.func.isRequired,
+  handleSubmitSearchForm: PropTypes.func.isRequired,
+};
 export default CardsList;

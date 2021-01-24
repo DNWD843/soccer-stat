@@ -1,5 +1,6 @@
 import InfoTooltip from '../InfoTooltip/InfoTooltip';
 import { forInfoTooltip as config } from '../../configs/configForComponents';
+import PropTypes from 'prop-types';
 
 /**
  * @module EmptyDataTooltip
@@ -35,5 +36,12 @@ function EmptyDataTooltip({
     />
   );
 }
+
+EmptyDataTooltip.propTypes = {
+  isEmptyDataTooltipOpened: PropTypes.bool.isRequired,
+  hasNoMatchesTooltipOpened: PropTypes.bool.isRequired,
+  onOverlayClick: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired,
+};
 
 export default EmptyDataTooltip;

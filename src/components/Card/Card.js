@@ -1,5 +1,6 @@
 import pathToDefaultImage from '../../images/soccer-ball.svg';
 import { useCallback } from 'react';
+import PropTypes from 'prop-types';
 import './Card.css';
 
 /**
@@ -8,7 +9,7 @@ import './Card.css';
  * @param {Object} card - объект с данными турнира или команды
  * @property {Number} card.id - id турнира или команды
  * @property {String} card.title - название турнира или команды
- * @property {String} card.country - страна турнира или команды
+ * @property {Object} card.country - страна турнира или команды
  * @property {String} card.image - URL изображения: для турнира - флаг страны, для команды - эмблема команды
  * @param {Function} handleSelectOfCard - колбэк, обработчик выбора карточки
  * @returns {JSX}
@@ -40,5 +41,13 @@ function Card({ id, title, country, image, handleSelectOfCard }) {
     </li>
   );
 }
+
+Card.propTypes = {
+  id: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  country: PropTypes.object.isRequired,
+  image: PropTypes.string,
+  handleSelectOfCard: PropTypes.func.isRequired,
+};
 
 export default Card;

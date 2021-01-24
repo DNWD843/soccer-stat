@@ -6,6 +6,7 @@ import pathToBallImage from '../../images/soccer-ball.svg';
 import CompetitionCalendarTable from '../CompetitionCalendarTable/CompetitionCalendarTable';
 import SetDatePeriodForm from '../SetDatePeriodForm/SetDatePeriodForm';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 import './CompetitionCalendar.css';
 
 /**
@@ -158,5 +159,14 @@ function CompetitionCalendar({
     </section>
   );
 }
+
+CompetitionCalendar.propTypes = {
+  calendarData: PropTypes.object.isRequired,
+  competitionInfo: PropTypes.object.isRequired,
+  getData: PropTypes.func.isRequired,
+  handleChangeSeason: PropTypes.func.isRequired,
+  handleChangeMonth: PropTypes.func.isRequired,
+  handleSubmitSetDatePeriodForm: PropTypes.func.isRequired,
+};
 
 export default CompetitionCalendar;

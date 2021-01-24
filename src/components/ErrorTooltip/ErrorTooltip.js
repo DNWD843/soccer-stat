@@ -1,5 +1,6 @@
 import InfoTooltip from '../InfoTooltip/InfoTooltip';
 import { forInfoTooltip as config } from '../../configs/configForComponents';
+import PropTypes from 'prop-types';
 
 /**
  * @module ErrorTooltip
@@ -28,5 +29,12 @@ function ErrorTooltip({
     />
   );
 }
+
+ErrorTooltip.propTypes = {
+  isErrorTooltipOpened: PropTypes.bool.isRequired,
+  isServerErrorTooltipOpened: PropTypes.bool.isRequired,
+  onOverlayClick: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired,
+};
 
 export default ErrorTooltip;
