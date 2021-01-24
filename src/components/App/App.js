@@ -232,6 +232,7 @@ function App() {
         getCompetitionInfo(id),
       ])
         .then(([data, info]) => {
+          setCompetitionInfo(info);
           if (!data.matches) {
             setIsErrorTooltipOpened(true);
             document.addEventListener('keydown', handleEscClose);
@@ -239,9 +240,9 @@ function App() {
           } else if (data.matches.length === 0) {
             document.addEventListener('keydown', handleEscClose);
             setIsEmptyDataTooltipOpened(true);
+            setCalendarData({});
           } else {
             setCalendarData(data);
-            setCompetitionInfo(info);
           }
         })
         .catch((err) => {
@@ -297,6 +298,7 @@ function App() {
     (id, dateFromId, dateToId) => {
       Promise.all([getTeamCalendarByDatePeriod(id, dateFromId, dateToId), getTeamInfo(id)])
         .then(([data, info]) => {
+          setTeamInfo(info);
           if (!data.matches) {
             setIsErrorTooltipOpened(true);
             document.addEventListener('keydown', handleEscClose);
@@ -304,18 +306,19 @@ function App() {
           } else if (data.matches.length === 0) {
             document.addEventListener('keydown', handleEscClose);
             setIsEmptyDataTooltipOpened(true);
+            setCalendarData({});
           } else {
             setTeamCalendarData(data.matches);
-            setTeamInfo(info);
           }
         })
         .catch((err) => {
           console.log(err);
-          setIsServerErrorTooltipOpened(true);
+          closeAllPopups(handleEscClose);
           document.addEventListener('keydown', handleEscClose);
+          setIsServerErrorTooltipOpened(true);
         });
     },
-    [handleEscClose],
+    [handleEscClose, closeAllPopups],
   );
 
   /**
